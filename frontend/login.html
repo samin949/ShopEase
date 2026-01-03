@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopEase | Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Montserrat:wght@800;900&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --logo-color: #46F0D2;
+            --border: #CFA97E;
+            --dark-bg: #0a0a14;
+            --card-bg: rgba(20, 20, 30, 0.9);
+            --text-light: #ffffff;
+            --text-glow: rgba(255, 255, 255, 0.8);
+            --accent-color: #46F0D2;
+            --secondary-color: #CFA97E;
+            --accent-dark: #2BBFA6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: var(--dark-bg);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+            padding: 15px;
+        }
+        
+        /* Background elements */
+        .bg-element {
+            position: fixed;
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0.4;
+            filter: blur(40px);
+        }
+        
+        .bg-1 {
+            width: 500px;
+            height: 500px;
+            background: var(--accent-color);
+            top: -200px;
+            left: -200px;
+            animation: float 25s infinite ease-in-out;
+        }
+        
+        .bg-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--secondary-color);
+            bottom: -150px;
+            right: -150px;
+            animation: float 30s infinite ease-in-out reverse;
+        }
+        
+        .bg-3 {
+            width: 300px;
+            height: 300px;
+            background: rgba(46, 240, 210, 0.3);
+            top: 50%;
+            left: 80%;
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        .bg-4 {
+            width: 350px;
+            height: 350px;
+            background: rgba(207, 169, 126, 0.3);
+            bottom: 60%;
+            right: 80%;
+            animation: float 35s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -50px) rotate(120deg); }
+            66% { transform: translate(-20px, 40px) rotate(240deg); }
+        }
+        
+        .container {
+            display: flex;
+            width: 95%;
+            max-width: 1100px;
+            min-height: 550px; /* REDUCED from 600px to 550px */
+            height: auto;
+            background: var(--card-bg);
+            border-radius: 25px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 
+                0 0 60px rgba(70, 240, 210, 0.2),
+                0 0 100px rgba(70, 240, 210, 0.1),
+                0 0 140px rgba(207, 169, 126, 0.1);
+            border: 2px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+        
+        /* Left section */
+        .left-section {
+            flex: 1;
+            background: linear-gradient(135deg, rgba(70, 240, 210, 0.1), rgba(207, 169, 126, 0.1));
+            padding: 30px; /* REDUCED from 40px */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .left-section::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: 
+                linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            top: -50%;
+            left: -50%;
+            transform: rotate(30deg);
+            animation: shine 8s infinite linear;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(30deg); }
+            100% { transform: translateX(100%) rotate(30deg); }
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px; /* REDUCED from 30px */
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo-icon {
+            font-size: 36px; /* REDUCED from 42px */
+            margin-right: 15px; /* REDUCED from 20px */
+            color: var(--accent-color);
+            filter: drop-shadow(0 0 10px rgba(70, 240, 210, 0.7));
+        }
+        
+        .logo h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 36px; /* REDUCED from 42px */
+            font-weight: 900;
+            color: var(--accent-color);
+            text-shadow: 0 0 20px rgba(70, 240, 210, 0.5);
+            letter-spacing: 1px;
+        }
+        
+        .left-section h2 {
+            font-size: 28px; /* REDUCED from 36px */
+            margin-bottom: 15px; /* REDUCED from 20px */
+            position: relative;
+            z-index: 2;
+            font-weight: 800;
+            color: var(--accent-color);
+        }
+        
+        .left-section p {
+            font-size: 16px; /* REDUCED from 18px */
+            line-height: 1.5;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+            max-width: 500px;
+            margin-bottom: 15px; /* REDUCED from 20px */
+        }
+        
+        .feature-list {
+            margin-top: 20px; /* REDUCED from 30px */
+            position: relative;
+            z-index: 2;
+        }
+        
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px; /* REDUCED from 15px */
+            font-size: 14px; /* REDUCED from 16px */
+        }
+        
+        .feature-list i {
+            margin-right: 10px; /* REDUCED from 12px */
+            color: var(--accent-color);
+            font-size: 18px; /* REDUCED from 20px */
+            filter: drop-shadow(0 0 5px rgba(70, 240, 210, 0.7));
+        }
+        
+        .left-section > p:last-child {
+            margin-top: 20px; /* REDUCED from 30px */
+            font-size: 14px;
+        }
+        
+        /* Right section with forms */
+        .right-section {
+            flex: 1;
+            padding: 30px; /* REDUCED from 40px */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .login-header {
+            text-align: center;
+            margin-bottom: 25px; /* REDUCED from 40px */
+        }
+        
+        .login-header h2 {
+            font-size: 32px; /* REDUCED from 38px */
+            margin-bottom: 8px; /* REDUCED from 10px */
+            font-weight: 800;
+            color: var(--accent-color);
+            text-shadow: 0 0 15px rgba(70, 240, 210, 0.5);
+        }
+        
+        .login-header p {
+            color: var(--text-glow);
+            font-size: 14px; /* REDUCED from 16px */
+            font-weight: 300;
+        }
+        
+        /* Tab switcher */
+        .login-tabs {
+            display: flex;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 6px; /* REDUCED from 8px */
+            margin-bottom: 25px; /* REDUCED from 40px */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .login-tabs::before {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: calc(100% - 12px);
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-dark));
+            border-radius: 12px;
+            top: 6px;
+            left: 6px;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            box-shadow: 0 0 15px rgba(70, 240, 210, 0.5);
+        }
+        
+        .login-tabs.admin-active::before {
+            left: calc(50% - 6px);
+            background: linear-gradient(90deg, var(--secondary-color), rgba(207, 169, 126, 0.8));
+        }
+        
+        .tab-btn {
+            flex: 1;
+            padding: 14px; /* REDUCED from 18px */
+            border: none;
+            background: transparent;
+            font-size: 16px; /* REDUCED from 18px */
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            color: rgba(255, 255, 255, 0.7);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .tab-btn.active {
+            color: white;
+        }
+        
+        .login-form {
+            display: none;
+            animation: slideUp 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .login-form.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 20px; /* REDUCED from 30px */
+        }
+        
+        .form-group label {
+            display: block;
+            font-size: 14px; /* REDUCED from 16px */
+            font-weight: 500;
+            margin-bottom: 8px; /* REDUCED from 10px */
+            color: var(--text-light);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+        
+        .input-with-icon {
+            position: relative;
+        }
+        
+        .input-with-icon i {
+            position: absolute;
+            left: 15px; /* REDUCED from 20px */
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--accent-color);
+            font-size: 18px; /* REDUCED from 20px */
+            filter: drop-shadow(0 0 8px rgba(70, 240, 210, 0.7));
+            z-index: 2;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 16px 15px 16px 50px; /* REDUCED from 20px 20px 20px 60px */
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid transparent;
+            border-radius: 12px;
+            font-size: 14px; /* REDUCED from 16px */
+            transition: all 0.4s ease;
+            color: white;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 
+                0 0 15px rgba(70, 240, 210, 0.3),
+                inset 0 0 15px rgba(70, 240, 210, 0.1);
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px; /* REDUCED from 30px */
+            font-size: 14px; /* REDUCED from 15px */
+        }
+        
+        .remember {
+            display: flex;
+            align-items: center;
+        }
+        
+        .remember input {
+            margin-right: 8px; /* REDUCED from 10px */
+            width: 18px; /* REDUCED from 20px */
+            height: 18px;
+            accent-color: var(--accent-color);
+        }
+        
+        .forgot-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(70, 240, 210, 0.5);
+            transition: all 0.3s ease;
+            position: relative;
+            font-size: 14px;
+        }
+        
+        .forgot-link:hover {
+            color: var(--secondary-color);
+        }
+        
+        .forgot-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            bottom: -3px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .forgot-link:hover::after {
+            width: 100%;
+        }
+        
+        .login-btn {
+            width: 100%;
+            padding: 16px; /* REDUCED from 20px */
+            background: linear-gradient(45deg, var(--accent-color), var(--accent-dark));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px; /* REDUCED from 18px */
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            margin-bottom: 20px; /* REDUCED from 30px */
+            box-shadow: 0 8px 20px rgba(70, 240, 210, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .login-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s ease;
+            z-index: -1;
+        }
+        
+        .login-btn:hover::before {
+            left: 100%;
+        }
+        
+        .login-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 12px 30px rgba(70, 240, 210, 0.4),
+                0 0 20px rgba(70, 240, 210, 0.2);
+        }
+        
+        .separator {
+            display: flex;
+            align-items: center;
+            margin: 20px 0; /* REDUCED from 30px */
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .separator::before,
+        .separator::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+        }
+        
+        .separator span {
+            padding: 0 15px; /* REDUCED from 20px */
+            font-size: 13px; /* REDUCED from 14px */
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .social-login {
+            display: flex;
+            justify-content: center;
+            gap: 15px; /* REDUCED from 20px */
+            margin-bottom: 20px; /* REDUCED from 30px */
+        }
+        
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px; /* REDUCED from 60px */
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid transparent;
+            color: white;
+            font-size: 20px; /* REDUCED from 24px */
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .social-btn::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: conic-gradient(from 0deg, var(--accent-color), var(--secondary-color), var(--accent-color));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .social-btn:hover::before {
+            opacity: 1;
+        }
+        
+        .social-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 20px rgba(70, 240, 210, 0.2);
+        }
+        
+        .facebook-btn:hover {
+            border-color: #3b5998;
+            color: #3b5998;
+        }
+        
+        .google-btn:hover {
+            border-color: #db4437;
+            color: #db4437;
+        }
+        
+        .apple-btn:hover {
+            border-color: white;
+            color: white;
+        }
+        
+        .register-link {
+            text-align: center;
+            font-size: 14px; /* REDUCED from 15px */
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .register-link a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(70, 240, 210, 0.5);
+            margin-left: 5px;
+            position: relative;
+        }
+        
+        .register-link a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            bottom: -3px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .register-link a:hover::after {
+            width: 100%;
+        }
+        
+        .admin-note {
+            background: rgba(70, 240, 210, 0.1);
+            border-left: 4px solid var(--accent-color);
+            padding: 12px; /* REDUCED from 15px */
+            border-radius: 8px;
+            margin-top: 15px; /* REDUCED from 25px */
+            font-size: 13px; /* REDUCED from 14px */
+            color: var(--accent-color);
+            text-shadow: 0 0 10px rgba(70, 240, 210, 0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+        
+        /* Floating shapes - optional to remove if still too crowded */
+        .floating-shape {
+            position: absolute;
+            width: 30px; /* REDUCED from 40px */
+            height: 30px;
+            background: rgba(70, 240, 210, 0.2);
+            border-radius: 8px;
+            z-index: -1;
+            animation: floatShape 15s infinite linear;
+        }
+        
+        .shape-1 {
+            top: 10%;
+            left: 5%;
+            background: var(--accent-color);
+            animation-delay: 0s;
+        }
+        
+        .shape-2 {
+            top: 70%;
+            right: 8%;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            animation-delay: -5s;
+        }
+        
+        .shape-3 {
+            bottom: 20%;
+            left: 10%;
+            background: var(--accent-color);
+            border-radius: 0;
+            animation-delay: -10s;
+        }
+        
+        @keyframes floatShape {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(20px, -30px) rotate(90deg); }
+            50% { transform: translate(40px, 10px) rotate(180deg); }
+            75% { transform: translate(10px, 30px) rotate(270deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
+        }
+        
+        /* Responsive design */
+        @media (max-width: 992px) {
+            .container {
+                flex-direction: column;
+                margin: 20px 0;
+                min-height: auto;
+            }
+            
+            .left-section, .right-section {
+                padding: 25px;
+            }
+            
+            .logo h1 {
+                font-size: 32px;
+            }
+            
+            .left-section h2 {
+                font-size: 26px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                min-height: auto;
+                max-width: 95%;
+            }
+            
+            .logo h1 {
+                font-size: 28px;
+            }
+            
+            .left-section h2 {
+                font-size: 24px;
+            }
+            
+            .login-header h2 {
+                font-size: 26px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .left-section, .right-section {
+                padding: 20px 15px;
+            }
+            
+            .logo h1 {
+                font-size: 24px;
+            }
+            
+            .left-section h2 {
+                font-size: 20px;
+            }
+            
+            .login-header h2 {
+                font-size: 22px;
+            }
+            
+            .remember-forgot {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .social-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+            
+            .floating-shape {
+                display: none; /* Hide floating shapes on small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background elements -->
+    <div class="bg-element bg-1"></div>
+    <div class="bg-element bg-2"></div>
+    <div class="bg-element bg-3"></div>
+    <div class="bg-element bg-4"></div>
+    
+    <!-- Floating shapes -->
+    <div class="floating-shape shape-1"></div>
+    <div class="floating-shape shape-2"></div>
+    <div class="floating-shape shape-3"></div>
+    
+    <div class="container">
+        <!-- Left Section with Branding -->
+        <div class="left-section">
+            <div class="logo">
+                <i class="fas fa-shopping-bag logo-icon"></i>
+                <h1>ShopEase</h1>
+            </div>
+            <h2>Welcome to ShopEase</h2>
+            <p>Experience premium shopping with ShopEase. We bring you the most elegant, efficient, and seamless shopping experience on the web.</p>
+            
+            <ul class="feature-list">
+                <li><i class="fas fa-bolt"></i> Lightning-fast checkout process</li>
+                <li><i class="fas fa-gift"></i> Exclusive member rewards</li>
+                <li><i class="fas fa-gift"></i> Unbelievable Discounts</li>
+                <li><i class="fas fa-rocket"></i> Same-day delivery in select cities</li>
+            </ul>
+            
+            <p>Admin users get access to our dashboard with real-time analytics and management tools.</p>
+        </div>
+        
+        <!-- Right Section with Forms -->
+        <div class="right-section">
+            <div class="login-header">
+                <h2>Welcome</h2>
+                <p>Choose your login type to continue</p>
+            </div>
+            
+            <!-- Tab Switcher -->
+            <div class="login-tabs" id="loginTabs">
+                <button class="tab-btn active" id="user-tab">
+                    <i class="fas fa-user"></i> User Login
+                </button>
+                <button class="tab-btn" id="admin-tab">
+                    <i class="fas fa-crown"></i> Admin Login
+                </button>
+            </div>
+            
+            <!-- User Login Form -->
+            <div class="login-form active" id="user-form">
+                <form id="userLoginForm">
+                    <div class="form-group">
+                        <label for="user-email"><i class="fas fa-envelope"></i> Email Address</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-at"></i>
+                            <input type="email" id="user-email" class="form-control" placeholder="your.email@example.com" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="user-password"><i class="fas fa-key"></i> Password</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="user-password" class="form-control" placeholder="Enter your password" required>
+                        </div>
+                    </div>
+                    
+                    <div class="remember-forgot">
+                        <div class="remember">
+                            <input type="checkbox" id="remember-user">
+                            <label for="remember-user">Remember me</label>
+                        </div>
+                        <a href="#" class="forgot-link">Forgot password?</a>
+                    </div>
+                    
+                    <button type="submit" class="login-btn">
+                        <i class="fas fa-sign-in-alt"></i> Sign In
+                    </button>
+                    
+                    <div class="separator">
+                        <span>Or continue with</span>
+                    </div>
+                    
+                    <div class="social-login">
+                        <div class="social-btn facebook-btn">
+                            <i class="fab fa-facebook-f"></i>
+                        </div>
+                        <div class="social-btn google-btn">
+                            <i class="fab fa-google"></i>
+                        </div>
+                        <div class="social-btn apple-btn">
+                            <i class="fab fa-apple"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="register-link">
+                        New to ShopEase?
+                        <a href="#" id="register-link">Create an account</a>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Admin Login Form -->
+            <div class="login-form" id="admin-form">
+                <form id="adminLoginForm">
+                    <div class="form-group">
+                        <label for="admin-username"><i class="fas fa-user-shield"></i> Admin Username</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-user-ninja"></i>
+                            <input type="text" id="admin-username" class="form-control" placeholder="Enter your admin username" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="admin-password"><i class="fas fa-fingerprint"></i> Admin Password</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="admin-password" class="form-control" placeholder="Enter your admin password" required>
+                        </div>
+                    </div>
+                    
+                    <div class="remember-forgot">
+                        <div class="remember">
+                            <input type="checkbox" id="remember-admin">
+                            <label for="remember-admin">Remember this device</label>
+                        </div>
+                        <a href="#" class="forgot-link">Need a reset?</a>
+                    </div>
+                    
+                    <button type="submit" class="login-btn">
+                        <i class="fas fa-tachometer-alt"></i> Access Dashboard
+                    </button>
+                    
+                    <div class="admin-note">
+                        <i class="fas fa-exclamation-triangle"></i> <strong>Security Notice:</strong> Admin access is monitored 24/7. Any unauthorized attempts will trigger security protocols.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<script>
+    // Set base API URL
+    const API_BASE_URL = 'http://localhost:5000';
+    
+    // Tab switching
+    const userTab = document.getElementById('user-tab');
+    const adminTab = document.getElementById('admin-tab');
+    const userForm = document.getElementById('user-form');
+    const adminForm = document.getElementById('admin-form');
+    const loginTabs = document.getElementById('loginTabs');
+    const registerLink = document.getElementById('register-link');
+    
+    // Track current mode
+    let isRegistrationMode = false;
+    let registrationFormCreated = false;
+    
+    userTab.addEventListener('click', () => {
+        userTab.classList.add('active');
+        adminTab.classList.remove('active');
+        userForm.classList.add('active');
+        adminForm.classList.remove('active');
+        loginTabs.classList.remove('admin-active');
+        
+        // Always show login form when switching to user tab
+        showLoginForm();
+    });
+    
+    adminTab.addEventListener('click', () => {
+        adminTab.classList.add('active');
+        userTab.classList.remove('active');
+        adminForm.classList.add('active');
+        userForm.classList.remove('active');
+        loginTabs.classList.add('admin-active');
+        
+        // Hide registration form if it exists
+        hideRegistrationForm();
+    });
+    
+    // Show login form
+    function showLoginForm() {
+        const loginForm = document.getElementById('userLoginForm');
+        const registerForm = document.getElementById('userRegisterForm');
+        
+        if (loginForm) loginForm.style.display = 'block';
+        if (registerForm) registerForm.style.display = 'none';
+        
+        isRegistrationMode = false;
+        if (registerLink) registerLink.textContent = 'Create an account';
+    }
+    
+    // Show registration form
+    function showRegistrationForm() {
+        // Create form first if it doesn't exist
+        if (!registrationFormCreated) {
+            createRegistrationForm();
+        }
+        
+        const loginForm = document.getElementById('userLoginForm');
+        const registerForm = document.getElementById('userRegisterForm');
+        
+        if (loginForm) loginForm.style.display = 'none';
+        if (registerForm) registerForm.style.display = 'block';
+        
+        isRegistrationMode = true;
+        if (registerLink) registerLink.textContent = 'Sign In';
+    }
+    
+    // Hide registration form
+    function hideRegistrationForm() {
+        const registerForm = document.getElementById('userRegisterForm');
+        if (registerForm) {
+            registerForm.style.display = 'none';
+        }
+        isRegistrationMode = false;
+    }
+    
+    // Create registration form dynamically (only once)
+    function createRegistrationForm() {
+        if (registrationFormCreated) return;
+        
+        // Create the registration form HTML
+        const registrationHTML = `
+            <form id="userRegisterForm" style="display: none;">
+                <div class="form-group">
+                    <label for="register-username"><i class="fas fa-user"></i> Username</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-user-circle"></i>
+                        <input type="text" id="register-username" class="form-control" placeholder="Choose a username" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="register-email"><i class="fas fa-envelope"></i> Email Address</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-at"></i>
+                        <input type="email" id="register-email" class="form-control" placeholder="your.email@example.com" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="register-password"><i class="fas fa-key"></i> Password</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="register-password" class="form-control" placeholder="Create a password (min 6 characters)" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="register-confirm-password"><i class="fas fa-lock"></i> Confirm Password</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="register-confirm-password" class="form-control" placeholder="Confirm your password" required>
+                    </div>
+                </div>
+                
+                <div class="remember-forgot">
+                    <div class="remember">
+                        <input type="checkbox" id="terms-agree" required>
+                        <label for="terms-agree">I agree to Terms & Conditions</label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="login-btn">
+                    <i class="fas fa-user-plus"></i> Create Account
+                </button>
+                
+                <div class="register-link">
+                    Already have an account?
+                    <a href="#" id="login-link">Sign In</a>
+                </div>
+            </form>
+        `;
+        
+        userForm.insertAdjacentHTML('beforeend', registrationHTML);
+        registrationFormCreated = true;
+        
+        // Add event listener for registration form
+        document.getElementById('userRegisterForm').addEventListener('submit', handleRegistration);
+        
+        // Add event listener for login link
+        document.getElementById('login-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            showLoginForm();
+        });
+    }
+    
+    // User Login Form Submission
+    document.getElementById('userLoginForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const loginInput = document.getElementById('user-email').value.trim();
+        const password = document.getElementById('user-password').value;
+        
+        if (!loginInput || !password) {
+            alert('Please enter both email and password');
+            return;
+        }
+        
+        const loginBtn = this.querySelector('.login-btn');
+        const originalText = loginBtn.innerHTML;
+        loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing In...';
+        loginBtn.disabled = true;
+        
+        try {
+            const response = await fetch(`${API_BASE_URL}/api/login`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'include',
+                body: JSON.stringify({
+                    username: loginInput,
+                    password: password
+                })
+            });
+            
+            const data = await response.json();
+            
+            if (data.success) {
+                loginBtn.innerHTML = '<i class="fas fa-check"></i> Success!';
+                loginBtn.style.background = 'linear-gradient(45deg, var(--accent-color), #2BBFA6)';
+                
+                // Redirect based on user role
+                setTimeout(() => {
+                    if (data.user.role === 'admin') {
+                        window.location.href = `${API_BASE_URL}/admin-dashboard`;
+                    } else {
+                        // Regular user - redirect to index page
+                        window.location.href = `http://localhost:8000/index.html`;
+                    }
+                }, 1000);
+                
+            } else {
+                loginBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> ' + data.error;
+                loginBtn.style.background = 'linear-gradient(45deg, #ff0000, #ff6600)';
+                
+                setTimeout(() => {
+                    loginBtn.innerHTML = originalText;
+                    loginBtn.style.background = 'linear-gradient(45deg, var(--accent-color), var(--accent-dark))';
+                    loginBtn.disabled = false;
+                }, 2000);
+            }
+        } catch (error) {
+            console.error('Login error:', error);
+            loginBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Connection Error';
+            loginBtn.style.background = 'linear-gradient(45deg, #ff0000, #ff6600)';
+            
+            setTimeout(() => {
+                loginBtn.innerHTML = originalText;
+                loginBtn.style.background = 'linear-gradient(45deg, var(--accent-color), var(--accent-dark))';
+                loginBtn.disabled = false;
+            }, 2000);
+        }
+    });
+    
+    // Registration handler
+    async function handleRegistration(e) {
+        e.preventDefault();
+        
+        const username = document.getElementById('register-username').value.trim();
+        const email = document.getElementById('register-email').value.trim();
+        const password = document.getElementById('register-password').value;
+        const confirmPassword = document.getElementById('register-confirm-password').value;
+        
+        // Validation
+        if (!username || !email || !password || !confirmPassword) {
+            alert('Please fill in all fields');
+            return;
+        }
+        
+        if (password !== confirmPassword) {
+            alert('Passwords do not match!');
+            return;
+        }
+        
+        if (password.length < 6) {
+            alert('Password must be at least 6 characters long!');
+            return;
+        }
+        
+        if (!document.getElementById('terms-agree').checked) {
+            alert('You must agree to the Terms & Conditions');
+            return;
+        }
+        
+        const registerBtn = e.target.querySelector('.login-btn');
+        const originalText = registerBtn.innerHTML;
+        registerBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating Account...';
+        registerBtn.disabled = true;
+        
+        try {
+            console.log('Sending registration request...', { username, email });
+            
+            const response = await fetch(`${API_BASE_URL}/api/register`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'include',
+                body: JSON.stringify({
+                    username: username,
+                    email: email,
+                    password: password
+                })
+            });
+            
+            console.log('Registration response status:', response.status);
+            
+            const data = await response.json();
+            console.log('Registration response data:', data);
+            
+            if (data.success) {
+                registerBtn.innerHTML = '<i class="fas fa-check"></i> Account Created!';
+                registerBtn.style.background = 'linear-gradient(45deg, var(--accent-color), #2BBFA6)';
+                
+                // Auto-login and redirect
+                setTimeout(() => {
+                    window.location.href = `http://localhost:8000/index.html`;
+                }, 1500);
+                
+            } else {
+                registerBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> ' + data.error;
+                registerBtn.style.background = 'linear-gradient(45deg, #ff0000, #ff6600)';
+                
+                setTimeout(() => {
+                    registerBtn.innerHTML = originalText;
+                    registerBtn.style.background = 'linear-gradient(45deg, var(--accent-color), var(--accent-dark))';
+                    registerBtn.disabled = false;
+                }, 2000);
+            }
+        } catch (error) {
+            console.error('Registration error:', error);
+            registerBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Connection Error';
+            registerBtn.style.background = 'linear-gradient(45deg, #ff0000, #ff6600)';
+            
+            setTimeout(() => {
+                registerBtn.innerHTML = originalText;
+                registerBtn.style.background = 'linear-gradient(45deg, var(--accent-color), var(--accent-dark))';
+                registerBtn.disabled = false;
+            }, 2000);
+        }
+    }
+    
+    // Admin Login Form Submission
+    document.getElementById('adminLoginForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const username = document.getElementById('admin-username').value.trim();
+        const password = document.getElementById('admin-password').value;
+        
+        if (!username || !password) {
+            alert('Please enter both username and password');
+            return;
+        }
+        
+        const loginBtn = this.querySelector('.login-btn');
+        const originalText = loginBtn.innerHTML;
+        loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verifying Credentials...';
+        loginBtn.disabled = true;
+        
+        try {
+            const response = await fetch(`${API_BASE_URL}/api/login`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'include',
+                body: JSON.stringify({
+                    username: username,
+                    password: password
+                })
+            });
+            
+            const data = await response.json();
+            
+            if (data.success) {
+                if (data.user.role === 'admin') {
+                    loginBtn.innerHTML = '<i class="fas fa-shield-alt"></i> Access Granted!';
+                    loginBtn.style.background = 'linear-gradient(45deg, var(--accent-color), #2BBFA6)';
+                    
+                    // Redirect to admin dashboard
+                    setTimeout(() => {
+                        window.location.href = `${API_BASE_URL}/admin-dashboard`;
+                    }, 1000);
+                } else {
+                    // User is not admin
+                    loginBtn.innerHTML = '<i class="fas fa-ban"></i> Admin Access Required!';
+                    loginBtn.style.background = 'linear-gradient(45deg, #ff0000, #990000)';
+                    
+                    setTimeout(() => {
+                        loginBtn.innerHTML = originalText;
+                        loginBtn.style.background = 'linear-gradient(45deg, var(--accent-color), var(--accent-dark))';
+                        loginBtn.disabled = false;
+                    }, 2000);
+                }
+            } else {
+                loginBtn.innerHTML = '<i class="fas fa-ban"></i> ' + data.error;
+                loginBtn.style.background = 'linear-gradient(45deg, #ff0000, #990000)';
+                
+                setTimeout(() => {
+                    loginBtn.innerHTML = originalText;
+                    loginBtn.style.background = 'linear-gradient(45deg, var(--accent-color), var(--accent-dark))';
+                    loginBtn.disabled = false;
+                }, 2000);
+            }
+        } catch (error) {
+            console.error('Admin login error:', error);
+            loginBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Connection Error';
+            loginBtn.style.background = 'linear-gradient(45deg, #ff0000, #ff6600)';
+            
+            setTimeout(() => {
+                loginBtn.innerHTML = originalText;
+                loginBtn.style.background = 'linear-gradient(45deg, var(--accent-color), var(--accent-dark))';
+                loginBtn.disabled = false;
+            }, 2000);
+        }
+    });
+    
+    // Register link click handler
+    registerLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        if (isRegistrationMode) {
+            showLoginForm();
+        } else {
+            showRegistrationForm();
+        }
+    });
+    
+    // Social login buttons
+    document.querySelectorAll('.social-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const platform = this.classList.contains('facebook-btn') ? 'Facebook' : 
+                            this.classList.contains('google-btn') ? 'Google' : 'Apple';
+            
+            this.style.transform = 'translateY(-15px) scale(1.2)';
+            this.style.boxShadow = '0 20px 40px rgba(70, 240, 210, 0.3)';
+            
+            setTimeout(() => {
+                this.style.transform = 'translateY(-8px) scale(1.1)';
+                this.style.boxShadow = '0 10px 25px rgba(70, 240, 210, 0.2)';
+            }, 300);
+            
+            alert(`Social login with ${platform} is coming soon!\n\nFor now, please use email/password login.`);
+        });
+    });
+    
+    // Input focus effects
+    document.querySelectorAll('.form-control').forEach(input => {
+        input.addEventListener('focus', function() {
+            this.parentElement.parentElement.style.transform = 'scale(1.02)';
+            this.parentElement.parentElement.style.transition = 'transform 0.3s ease';
+        });
+        
+        input.addEventListener('blur', function() {
+            this.parentElement.parentElement.style.transform = 'scale(1)';
+        });
+    });
+    
+    // Check if user is already logged in
+    async function checkAuthStatus() {
+        try {
+            const response = await fetch(`${API_BASE_URL}/api/check-auth`, {
+                credentials: 'include'
+            });
+            const data = await response.json();
+            
+            if (data.authenticated) {
+                // User is already logged in, redirect based on role
+                if (data.user.role === 'admin') {
+                    window.location.href = `${API_BASE_URL}/admin-dashboard`;
+                } else {
+                    window.location.href = `http://localhost:8000/index.html`;
+                }
+            }
+        } catch (error) {
+            console.log('Not logged in - showing login form');
+        }
+    }
+    
+    // Check auth status on page load
+    checkAuthStatus();
+    
+    // Initialize: Show login form by default
+    showLoginForm();
+    
+    // Debug helper
+    console.log('Login page loaded successfully');
+    console.log('User form element:', document.getElementById('userLoginForm'));
+    console.log('Admin form element:', document.getElementById('adminLoginForm'));
+</script>
+</body>
+</html>

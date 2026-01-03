@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | ShopEase</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #00b894;
+            --secondary: #D9A77B;
+            --dark: #2d3436;
+            --light: #f9f9f9;
+            --gray: #636e72;
+            --light-gray: #dfe6e9;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 32px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 16px;
+            transition: color 0.3s;
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        nav ul li a.active {
+            color: var(--primary);
+        }
+        
+        nav ul li a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(to right, var(--primary), #00a085);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .page-header h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+        
+        .page-header p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        /* Breadcrumb */
+        .breadcrumb {
+            background-color: white;
+            padding: 15px 0;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .breadcrumb .container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .breadcrumb a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .breadcrumb a:hover {
+            color: var(--primary);
+        }
+        
+        .breadcrumb span {
+            margin: 0 10px;
+            color: var(--light-gray);
+        }
+        
+        .breadcrumb .current {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        /* Content Styles */
+        .content-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            padding: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .content-section {
+            margin-bottom: 40px;
+        }
+        
+        .content-section h2 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-gray);
+        }
+        
+        .content-section h3 {
+            color: var(--dark);
+            margin: 20px 0 10px;
+        }
+        
+        .content-section p {
+            margin-bottom: 15px;
+            color: var(--gray);
+        }
+        
+        .content-section ul, .content-section ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+            color: var(--gray);
+        }
+        
+        .content-section li {
+            margin-bottom: 8px;
+        }
+        
+        .highlight-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--secondary);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .footer-logo span {
+            color: var(--secondary);
+        }
+        
+        .footer-about p {
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+        
+        .footer-links h3, .footer-contact h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: white;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-links h3::after, .footer-contact h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .footer-contact p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            opacity: 0.8;
+        }
+        
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            opacity: 0.7;
+            font-size: 14px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 15px 0;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+            }
+            
+            nav ul li {
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+            
+            .page-header h1 {
+                font-size: 32px;
+            }
+            
+            .content-container {
+                padding: 25px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .page-header {
+                padding: 40px 0;
+            }
+            
+            .page-header h1 {
+                font-size: 28px;
+            }
+            
+            .breadcrumb {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-shopping-bag"></i>
+                Shop<span>Ease</span>
+            </a>
+            
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1>Privacy Policy</h1>
+            <p>Your privacy is important to us. Learn how we protect your information.</p>
+        </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="index.html">Home</a>
+            <span>/</span>
+            <span class="current">Privacy Policy</span>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="content-container">
+            <div class="content-section">
+                <h2>Privacy Policy</h2>
+                <p>Your privacy is important to us. This Privacy Policy explains how ShopEase collects, uses, discloses, and safeguards your information when you visit our website or make a purchase.</p>
+                
+                <div class="highlight-box">
+                    <p><strong>Last Updated:</strong> October 15, 2023</p>
+                    <p>We reserve the right to make changes to this Privacy Policy at any time. We will alert you about any changes by updating the "Last Updated" date of this Privacy Policy.</p>
+                </div>
+            </div>
+            
+            <div class="content-section">
+                <h3>Information We Collect</h3>
+                <p>We collect information that you provide directly to us when you:</p>
+                <ul>
+                    <li>Create an account on our website</li>
+                    <li>Make a purchase or attempt to make a purchase</li>
+                    <li>Subscribe to our newsletter</li>
+                    <li>Participate in contests, surveys, or promotions</li>
+                    <li>Contact our customer service</li>
+                </ul>
+                
+                <p>The types of personal information we may collect include:</p>
+                <ul>
+                    <li>Name and contact information (email address, phone number, shipping address)</li>
+                    <li>Payment information (credit card details, billing address)</li>
+                    <li>Purchase history and preferences</li>
+                    <li>Communication preferences</li>
+                </ul>
+            </div>
+            
+            <div class="content-section">
+                <h3>How We Use Your Information</h3>
+                <p>We use the information we collect to:</p>
+                <ol>
+                    <li>Process your transactions and send you order confirmations</li>
+                    <li>Communicate with you about orders, products, services, and promotions</li>
+                    <li>Improve our website, products, and customer service</li>
+                    <li>Prevent fraudulent transactions and monitor against theft</li>
+                    <li>Personalize your shopping experience</li>
+                    <li>Comply with legal obligations</li>
+                </ol>
+            </div>
+            
+            <div class="content-section">
+                <h3>Information Sharing and Disclosure</h3>
+                <p>We do not sell, trade, or rent your personal identification information to others. We may share generic aggregated demographic information not linked to any personal identification information regarding visitors and users with our business partners and trusted affiliates for the purposes outlined above.</p>
+                
+                <p>We may disclose your personal information to third-party service providers who perform services on our behalf, such as payment processing, data analysis, email delivery, hosting services, customer service, and marketing assistance.</p>
+            </div>
+            
+            <div class="content-section">
+                <h3>Data Security</h3>
+                <p>We implement appropriate data collection, storage, and processing practices and security measures to protect against unauthorized access, alteration, disclosure, or destruction of your personal information, username, password, transaction information, and data stored on our site.</p>
+                
+                <p>All sensitive/credit information you supply is encrypted via Secure Socket Layer (SSL) technology and stored with AES-256 encryption.</p>
+            </div>
+            
+            <div class="content-section">
+                <h3>Your Rights</h3>
+                <p>Depending on your location, you may have the right to:</p>
+                <ul>
+                    <li>Access the personal information we hold about you</li>
+                    <li>Request correction of inaccurate personal information</li>
+                    <li>Request deletion of your personal information</li>
+                    <li>Object to processing of your personal information</li>
+                    <li>Request restriction of processing your personal information</li>
+                    <li>Request transfer of your personal information</li>
+                    <li>Withdraw consent at any time where we are relying on consent to process your personal information</li>
+                </ul>
+                
+                <p>To exercise any of these rights, please contact us using the information provided in the Contact Us section.</p>
+            </div>
+            
+            <div class="content-section">
+                <h3>Contact Us</h3>
+                <p>If you have questions or comments about this Privacy Policy, please contact us at:</p>
+                <p><strong>Email:</strong> privacy@shopease.com<br>
+                <strong>Phone:</strong> 1-800-SHOP-EASE<br>
+                <strong>Address:</strong> 123 Commerce Street, Suite 500, San Francisco, CA 94108</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <a href="index.html" class="footer-logo">Shop<span>Ease</span></a>
+                    <p>Your one-stop destination for quality products and exceptional shopping experience. We're committed to bringing you the best products with outstanding customer service.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="disclaimer.html">Disclaimer</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Commerce Street, San Francisco, CA</p>
+                    <p><i class="fas fa-phone"></i> 1-800-SHOP-EASE</p>
+                    <p><i class="fas fa-envelope"></i> support@shopease.com</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 9am-8pm EST</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 ShopEase. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Set active navigation link
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('nav ul li a');
+            
+            navLinks.forEach(link => {
+                const linkPage = link.getAttribute('href');
+                if (linkPage === currentPage) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

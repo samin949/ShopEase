@@ -1,0 +1,2552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopEase - Cart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+
+        
+/* ================= FOOTER STYLES ================= */
+footer {
+  background: #131321;
+  color: #ffffff;
+  padding: 60px 0 25px;
+  position: relative;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 250px;
+  max-width: 350px;
+}
+
+/* Brand Section */
+.brand-section {
+  flex: 1.5;
+   padding-left: 30px; 
+}
+
+.footer-logo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #00b894;
+  margin-bottom: 15px;
+  letter-spacing: 0.5px;
+}
+
+.footer-description {
+  color: #cccccc;
+  line-height: 1.7;
+  font-size: 1rem;
+  max-width: 300px;
+  opacity: 0.9;
+    white-space: nowrap; /* Prevents text from wrapping */
+  
+}
+.footer-content {
+  padding-left: 30px; /* This moves everything to the right */
+}
+/* Links Section */
+.links-section {
+  padding-left: 20px;
+}
+
+.footer-heading {
+  font-size: 1.3rem;
+  color: #00b894;
+  margin-bottom: 20px;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 8px;
+}
+
+.footer-heading::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 40px;
+  height: 3px;
+  background: #00b894;
+  border-radius: 2px;
+}
+
+.footer-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-menu li {
+  margin-bottom: 12px;
+}
+
+.footer-menu li a {
+  color: #dddddd;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+  padding: 4px 0;
+}
+
+.footer-menu li a:hover {
+  color: #00b894;
+  transform: translateX(8px);
+}
+
+/* Social Section */
+.social-section {
+  padding-left: 20px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-icon:hover {
+  background: #00b894;
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 184, 148, 0.3);
+  border-color: #00b894;
+}
+
+.social-icon svg {
+  width: 22px;
+  height: 22px;
+  fill: #ffffff;
+}
+
+/* Copyright */
+.copyright {
+  text-align: center;
+  padding-top: 25px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.copyright p {
+  color: #aaaaaa;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* ================= DARK MODE ================= */
+.dark footer {
+  background: #131321;
+}
+
+.dark .footer-logo,
+.dark .footer-heading {
+  color: #00cec9;
+}
+
+.dark .footer-heading::after {
+  background: #00cec9;
+}
+
+.dark .footer-menu li a:hover,
+.dark .social-icon:hover {
+  color: #00cec9;
+}
+
+.dark .social-icon:hover {
+  background: #00cec9;
+  border-color: #00cec9;
+}
+
+.dark .footer-description {
+  color: #bbbbbb;
+}
+
+.dark .copyright {
+  border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+/* LIGHT MODE - UPDATED COLORS */
+
+.light footer {
+  background: #D9A77B;
+  color: #5A3A22; /* Add this for overall text color */
+}
+
+.light .footer-logo {
+  color: #5A3A22; /* Dark brown for logo */
+}
+
+.light .footer-heading {
+  color: #5A3A22; /* Dark brown for headings */
+}
+
+.light .footer-heading::after {
+  background: #5A3A22; /* Dark brown underline */
+}
+
+.light .footer-description {
+  color: #5A3A22; /* Dark brown for description */
+  opacity: 0.9; /* Slightly transparent for better readability */
+}
+
+/* LINKS - Need lighter color */
+.light .footer-menu li a {
+  color: #7B5C42; /* Lighter brown for links */
+}
+
+.light .footer-menu li a:hover {
+  color: #4A2F1E; /* Darker brown on hover */
+  transform: translateX(8px);
+}
+
+/* SOCIAL ICONS - Need to be visible on beige */
+.light .social-icon {
+  background: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+  border: 1px solid rgba(90, 58, 34, 0.2); /* Light brown border */
+}
+
+.light .social-icon svg {
+  fill: #5A3A22; /* Dark brown icons */
+}
+
+.light .social-icon:hover {
+  background: #5A3A22; /* Dark brown on hover */
+  border-color: #5A3A22;
+}
+
+.light .social-icon:hover svg {
+  fill: #FFFFFF; /* White icons on hover */
+}
+
+/* COPYRIGHT TEXT - Needs better contrast */
+.light .copyright {
+  border-top-color: rgba(90, 58, 34, 0.2); /* Light brown border */
+}
+
+.light .copyright p {
+  color: #5A3A22; /* Lighter brown for copyright */
+  opacity: 0.8;
+}
+/* ================= RESPONSIVE ================= */
+@media (max-width: 992px) {
+  .footer-content {
+    gap: 30px;
+  }
+  
+  .footer-section {
+    min-width: 220px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 40px;
+  }
+  
+  .footer-section {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 0;
+  }
+  
+  .footer-description {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  
+  .footer-heading::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .footer-menu li a:hover {
+    transform: none;
+  }
+  
+  .social-icons {
+    justify-content: center;
+  }
+}
+        .discount-min-quantity {
+            font-size: 0.85rem;
+            padding: 5px 10px;
+            border-radius: 8px;
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .discount-min-quantity.applicable {
+            background: rgba(70, 240, 210, 0.2);
+            color: var(--success);
+            border: 1px solid rgba(70, 240, 210, 0.3);
+        }
+
+        .discount-min-quantity.not-applicable {
+            background: rgba(255, 107, 139, 0.2);
+            color: var(--error);
+            border: 1px solid rgba(255, 107, 139, 0.3);
+        }
+
+        .apply-discount-btn.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background: var(--border) !important;
+        }
+
+        .apply-discount-btn.disabled:hover {
+            background: var(--border) !important;
+            transform: none !important;
+        }
+        
+        :root {
+            --bg: #131321;
+            --text: #E6E6E6;
+            --accent: #46F0D2;
+            --accent-secondary: #131321;
+            --card: #1E1E2E;
+            --border: #2A2A3A;
+            --logo-color: #46F0D2;
+            --luxury-bg-1: rgba(70,240,210,0.10);
+            --luxury-bg-2: rgba(251,226,180,0.15);
+            --luxury-shape-1: rgba(70,240,210,0.30);
+            --luxury-shape-2: rgba(251,226,180,0.28);
+            --luxury-ring: rgba(251,226,180,0.65);
+            --luxury-ring-glow: rgba(251,226,180,0.40);
+            --success: #46F0D2;
+            --error: #FF6B8B;
+            --warning: #FFD166;
+            --info: #667eea;
+        }
+
+        body.light {
+            --bg: #D9A77B;
+            --text: #5A3A22;
+            --accent: #5A3A22;
+            --accent-secondary: #E7C9A4;
+            --card: #F3D7B9;
+            --border: #CFA97E;
+            --logo-color: #5A3A22;
+            --luxury-bg-1: rgba(90,58,34,0.15);
+            --luxury-bg-2: rgba(201,150,106,0.20);
+            --luxury-shape-1: rgba(90,58,34,0.35);
+            --luxury-shape-2: rgba(250, 186, 130, 0.644);
+            --luxury-ring: rgba(255,220,150,0.65);
+            --luxury-ring-glow: rgba(255,220,150,0.45);
+            --success: #2D936C;
+            --error: #D72638;
+            --warning: #D9A77B;
+            --info: #5A3A22;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            transition: 0.4s ease;
+            position: relative;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+
+        .dark-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(70,240,210,0.12) 0%, transparent 55%),
+                radial-gradient(circle at 80% 20%, rgba(251,226,180,0.10) 0%, transparent 55%),
+                linear-gradient(135deg, #0E0E1A 0%, #17172A 50%, #0E0E1A 100%);
+        }
+
+        .light-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(90,58,34,0.10) 0%, transparent 55%),
+                radial-gradient(circle at 70% 20%, rgba(201,150,106,0.10) 0%, transparent 55%),
+                linear-gradient(135deg, #F3D7B9 0%, #DAA97C 55%, #C79269 100%);
+        }
+
+        body.dark .dark-bg { display: block; }
+        body.dark .light-bg { display: none; }
+        body.light .light-bg { display: block; }
+        body.light .dark-bg { display: none; }
+
+        /* NAVBAR */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: var(--bg);
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        .navbar ul {display:flex; gap:30px; list-style:none;}
+        .navbar a {
+            color: var(--text);
+            font-weight: 600;
+            text-decoration:none;
+            transition:0.3s;
+        }
+        .navbar a:hover {color: var(--accent);}        
+
+        .theme-toggle {
+            background: var(--accent);
+            border:none;
+            padding:10px 20px;
+            color:var(--bg);
+            border-radius:20px;
+            cursor:pointer;
+            font-weight:600;
+            transition:0.3s;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            color: var(--logo-color);
+        }
+
+        /* Cart Page Styles */
+        .cart-container {
+            padding: 40px 8%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--text);
+        }
+
+        .cart-content {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .cart-items {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .cart-item {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 25px;
+            display: flex;
+            gap: 20px;
+            border: 1px solid var(--border);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .cart-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .cart-item-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--bg);
+            flex-shrink: 0;
+        }
+
+        .cart-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cart-item-details {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .cart-item-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .cart-item-category {
+            font-size: 0.9rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .price-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: var(--text);
+            opacity: 0.6;
+            font-size: 1rem;
+        }
+
+        .discounted-price {
+            color: var(--success);
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .savings-badge {
+            background: var(--success);
+            color: var(--bg);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--bg);
+            border-radius: 10px;
+            padding: 8px 15px;
+            border: 1px solid var(--border);
+        }
+
+        .quantity-btn {
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.2rem;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .quantity-btn:hover {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
+        .quantity {
+            font-size: 1.1rem;
+            font-weight: 600;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .remove-btn {
+            background: none;
+            border: 2px solid #e74c3c;
+            color: #e74c3c;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-left: auto;
+        }
+
+        .remove-btn:hover {
+            background: #e74c3c;
+            color: white;
+        }
+
+        /* Discounts Section */
+        .discounts-section {
+            margin: 30px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, var(--luxury-bg-1) 0%, var(--luxury-bg-2) 100%);
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+
+        .discounts-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .discounts-header h3 {
+            font-size: 1.5rem;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .discounts-toggle {
+            background: var(--accent);
+            color: var(--bg);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .discounts-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(70, 240, 210, 0.3);
+        }
+
+        .discounts-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .discount-card {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .discount-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .discount-card.active {
+            border-color: var(--success);
+            box-shadow: 0 0 0 2px rgba(70, 240, 210, 0.3);
+        }
+
+        .discount-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--success);
+            color: var(--bg);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .discount-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .discount-description {
+            font-size: 0.9rem;
+            color: var(--text);
+            opacity: 0.8;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .discount-expiry {
+            font-size: 0.8rem;
+            color: var(--text);
+            opacity: 0.6;
+            margin-bottom: 15px;
+        }
+
+        .apply-discount-btn {
+            width: 100%;
+            padding: 10px;
+            background: var(--accent);
+            color: var(--bg);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .apply-discount-btn:hover {
+            background: var(--text);
+        }
+
+        .apply-discount-btn.applied {
+            background: var(--success);
+        }
+
+        .apply-discount-btn.applied:hover {
+            background: #3BD9C0;
+        }
+
+        .coupon-section {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .coupon-section h4 {
+            margin-bottom: 15px;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .coupon-input-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        #couponCode {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--bg);
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        .coupon-btn {
+            padding: 12px 25px;
+            background: var(--accent);
+            color: var(--bg);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .coupon-btn:hover {
+            background: var(--text);
+            transform: translateY(-2px);
+        }
+
+        .coupon-message {
+            margin-top: 10px;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .coupon-message.success {
+            background: rgba(70, 240, 210, 0.2);
+            border: 1px solid var(--success);
+            color: var(--success);
+            display: block;
+        }
+
+        .coupon-message.error {
+            background: rgba(255, 107, 139, 0.2);
+            border: 1px solid var(--error);
+            color: var(--error);
+            display: block;
+        }
+
+        .coupon-message.info {
+            background: rgba(102, 126, 234, 0.2);
+            border: 1px solid var(--info);
+            color: var(--info);
+            display: block;
+        }
+
+        .applied-discounts {
+            margin-top: 25px;
+            padding: 20px;
+            background: var(--card);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .applied-discounts h4 {
+            margin-bottom: 15px;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .applied-discount-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            background: rgba(70, 240, 210, 0.1);
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border: 1px solid rgba(70, 240, 210, 0.2);
+        }
+
+        .applied-discount-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .applied-discount-name {
+            font-weight: 500;
+        }
+
+        .applied-discount-value {
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        .remove-discount-btn {
+            background: rgba(255, 107, 139, 0.2);
+            color: var(--error);
+            border: 1px solid rgba(255, 107, 139, 0.3);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .remove-discount-btn:hover {
+            background: rgba(255, 107, 139, 0.4);
+        }
+
+        .no-discounts {
+            text-align: center;
+            padding: 20px;
+            opacity: 0.7;
+            font-style: italic;
+        }
+
+        /* Cart Summary */
+        .cart-summary {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid var(--border);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 100px;
+        }
+
+        .summary-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text);
+            text-align: center;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .summary-row:last-child {
+            border-bottom: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--accent);
+        }
+
+        .summary-label {
+            color: var(--text);
+            opacity: 0.8;
+        }
+
+        .summary-value {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .total-savings {
+            color: var(--success) !important;
+            font-weight: 700;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--accent);
+            color: var(--bg);
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .checkout-btn:hover {
+            background: var(--text);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 60px 20px;
+            background: var(--card);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .empty-cart-icon {
+            font-size: 4rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .empty-cart h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+
+        .empty-cart p {
+            color: var(--text);
+            opacity: 0.8;
+            margin-bottom: 30px;
+        }
+
+        .continue-shopping {
+            background: var(--accent);
+            color: var(--bg);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .continue-shopping:hover {
+            background: var(--text);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1100px) {
+            .discounts-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 968px) {
+            .cart-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .cart-summary {
+                position: static;
+            }
+            
+            .discounts-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cart-container {
+                padding: 20px 5%;
+            }
+            
+            .cart-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .cart-item-image {
+                align-self: center;
+            }
+            
+            .cart-item-controls {
+                justify-content: center;
+            }
+            
+            .remove-btn {
+                margin-left: 0;
+            }
+            
+            .discounts-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cart-container {
+                padding: 20px 3%;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .cart-item {
+                padding: 20px;
+            }
+            
+            .cart-item-image {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .coupon-input-group {
+                flex-direction: column;
+            }
+        }
+
+        /* Notification */
+        .cart-notification {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: var(--success);
+            color: var(--bg);
+            border-radius: 12px;
+            padding: 1rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            z-index: 1000;
+            animation: slideInRight 0.3s ease;
+            max-width: 300px;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Custom Modal Styles - Updated */
+        .custom-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+            display: none;
+        }
+
+        .custom-modal.show {
+            display: block;
+        }
+
+        .modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--card);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            animation: modalSlideIn 0.4s ease;
+            border: 1px solid var(--border);
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -60%);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--success) 100%);
+            color: var(--bg);
+            padding: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            font-size: 1.3rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .modal-close {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .confirmation-message {
+            background: linear-gradient(135deg, var(--luxury-bg-1) 0%, var(--luxury-bg-2) 100%);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .confirmation-message p {
+            margin: 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            line-height: 1.6;
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        .confirmation-message i {
+            color: var(--accent);
+            margin-top: 4px;
+            font-size: 1.2rem;
+        }
+
+        #currentDiscountName,
+        #newDiscountName {
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .discount-comparison {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--bg);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border: 1px solid var(--border);
+        }
+
+        .current-discount,
+        .new-discount {
+            flex: 1;
+            text-align: center;
+            padding: 15px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .current-discount {
+            background: rgba(255, 107, 139, 0.1);
+            border: 1px solid rgba(255, 107, 139, 0.2);
+        }
+
+        .new-discount {
+            background: rgba(70, 240, 210, 0.1);
+            border: 1px solid rgba(70, 240, 210, 0.2);
+        }
+
+        .discount-label {
+            font-size: 13px;
+            color: var(--text);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            opacity: 0.8;
+        }
+
+        .discount-value {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--success);
+        }
+
+        .current-discount .discount-value {
+            color: var(--error);
+        }
+
+        .arrow-icon {
+            padding: 0 25px;
+            color: var(--accent);
+            font-size: 28px;
+            opacity: 0.7;
+        }
+
+        .modal-footer {
+            padding: 25px;
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+            display: flex;
+            gap: 15px;
+            justify-content: flex-end;
+        }
+
+        .modal-btn {
+            padding: 14px 30px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            font-size: 15px;
+            min-width: 150px;
+            justify-content: center;
+        }
+
+        .cancel-btn {
+            background: var(--card);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .cancel-btn:hover {
+            background: var(--border);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .confirm-btn {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--success) 100%);
+            color: var(--bg);
+        }
+
+        .confirm-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(70, 240, 210, 0.3);
+        }
+
+        /* Light mode adjustments */
+        body.light .confirmation-message {
+            background: rgba(90,58,34,0.08);
+            border-left: 4px solid var(--accent);
+        }
+
+        body.light .discount-comparison {
+            background: var(--accent-secondary);
+        }
+
+        body.light .modal-footer {
+            background: var(--accent-secondary);
+        }
+
+        body.light .cancel-btn {
+            background: var(--card);
+        }
+    </style>
+</head>
+<body class="dark">
+
+<div class="background-container">
+    <div class="dark-bg"></div>
+    <div class="light-bg"></div>
+</div>
+
+<header>
+    <nav class="navbar">
+        <h2 class="logo">ShopEase</h2>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="cart.html" style="color: var(--accent);">Cart</a></li>
+        </ul>
+        <button class="theme-toggle" id="themeToggle">Light Mode</button>
+    </nav>
+</header>
+
+<div class="cart-container">
+    <h2 class="page-title">Your Shopping Cart</h2>
+    
+    <!-- Discounts Section -->
+    <div class="discounts-section">
+        <div class="discounts-header">
+            <h3><i class="fas fa-tag"></i> Apply Discounts</h3>
+            <button class="discounts-toggle" onclick="discountManager.toggleDiscounts()">
+                <i class="fas fa-percentage"></i> Show Discounts
+            </button>
+        </div>
+        
+        <div class="discounts-container" id="discountsContainer" style="display: none;">
+            <!-- Discount cards will be loaded here -->
+        </div>
+        
+        <div class="coupon-section">
+            <h4><i class="fas fa-ticket-alt"></i> Have a coupon code?</h4>
+            <div class="coupon-input-group">
+                <input type="text" id="couponCode" placeholder="Enter coupon code (e.g., WELCOME20)">
+                <button class="coupon-btn" onclick="discountManager.applyCoupon()">
+                    <i class="fas fa-check"></i> Apply
+                </button>
+            </div>
+            <div id="couponMessage" class="coupon-message"></div>
+        </div>
+        
+        <div class="applied-discounts" id="appliedDiscounts">
+            <h4><i class="fas fa-check-circle"></i> Applied Discounts</h4>
+            <div id="appliedDiscountsList">
+                <p class="no-discounts">No discounts applied</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="cart-content">
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be loaded here -->
+        </div>
+        
+        <div class="cart-summary" id="cartSummary">
+            <!-- Cart summary will be loaded here -->
+        </div>
+    </div>
+</div>
+
+<!-- Custom Confirmation Modal -->
+<div id="discountConfirmationModal" class="custom-modal" style="display: none;">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>
+                <i class="fas fa-exchange-alt"></i>
+                Replace Discount?
+            </h3>
+            <button class="modal-close" onclick="closeConfirmationModal()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="confirmation-message">
+                <p>
+                    <i class="fas fa-info-circle"></i>
+                    You already have "<span id="currentDiscountName"></span>" applied.
+                    Would you like to replace it with "<span id="newDiscountName"></span>"?
+                </p>
+            </div>
+            
+            <div class="discount-comparison">
+                <div class="current-discount">
+                    <div class="discount-label">Current Discount:</div>
+                    <div class="discount-value" id="currentDiscountValue"></div>
+                </div>
+                <div class="arrow-icon">
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                </div>
+                <div class="new-discount">
+                    <div class="discount-label">New Discount:</div>
+                    <div class="discount-value" id="newDiscountValue"></div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="modal-btn cancel-btn" onclick="closeConfirmationModal()">
+                <i class="fas fa-times"></i>
+                Cancel
+            </button>
+            <button class="modal-btn confirm-btn" id="confirmReplaceBtn">
+                <i class="fas fa-check"></i>
+                Replace Discount
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+// API Configuration
+const API_BASE_URL = 'http://localhost:5000/api';
+
+// Get or create session ID
+function getSessionId() {
+    let sessionId = localStorage.getItem('shopease_session_id');
+    if (!sessionId) {
+        sessionId = 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+        localStorage.setItem('shopease_session_id', sessionId);
+    }
+    return sessionId;
+}
+
+// Modal control functions
+function closeConfirmationModal() {
+    const modal = document.getElementById('discountConfirmationModal');
+    modal.classList.remove('show');
+    modal.style.display = 'none';
+    
+    // Clear pending discounts
+    if (discountManager) {
+        discountManager.pendingDiscount = null;
+        discountManager.pendingCoupon = null;
+    }
+}
+
+// Discount Manager - Modified for single coupon application
+class DiscountManager {
+    constructor() {
+        this.activeDiscounts = [];
+        this.appliedDiscounts = [];
+        this.cartItems = [];
+        this.pendingDiscount = null; // Store pending discount
+        this.pendingCoupon = null; // Store pending coupon
+        this.init();
+    }
+
+    async init() {
+        await this.loadActiveDiscounts();
+        await this.loadCart();
+        this.setupEventListeners();
+    }
+
+    async loadCart() {
+        try {
+            const sessionId = getSessionId();
+            const response = await fetch(`${API_BASE_URL}/cart?session_id=${sessionId}`);
+            const data = await response.json();
+            
+            if (data.success) {
+                this.cartItems = data.items;
+                this.updateCartPrices();
+            }
+        } catch (error) {
+            console.error('Error loading cart:', error);
+        }
+    }
+
+    // Helper method to get total quantity in cart
+    getTotalCartQuantity() {
+        return this.cartItems.reduce((total, item) => total + item.quantity, 0);
+    }
+
+    // Helper method to check if a discount is a bundle discount
+    isBundleDiscount(discount) {
+        return discount.code === 'BUNDLE' || 
+               (discount.name && discount.name.toLowerCase().includes('bundle'));
+    }
+
+   async loadActiveDiscounts() {
+    try {
+        const response = await fetch(`${API_BASE_URL}/discounts/active`);
+        const data = await response.json();
+        
+        if (data.discounts) {
+            this.activeDiscounts = data.discounts;
+            
+            // Filter out Bulk Discount and keep only Bundle Discount
+            this.activeDiscounts = this.activeDiscounts.filter(discount => {
+                // Remove "Bulk Discount" if it exists
+                if (discount.name === 'Bulk Discount' || 
+                    (discount.description && discount.description.includes('Buy 3+ items'))) {
+                    return false;
+                }
+                return true;
+            });
+            
+            // Check if we still have a bundle discount from API
+            const hasBundleDiscount = this.activeDiscounts.some(d => 
+                d.code === 'BUNDLE' || 
+                (d.name && d.name.includes('Bundle'))
+            );
+            
+            // If no bundle discount exists, add the Bundle Discount
+            if (!hasBundleDiscount) {
+                this.activeDiscounts.push({
+                    id: 'bundle_discount_' + Date.now(),
+                    name: 'Bundle Discount',
+                    type: 'percentage',
+                    value: 20,
+                    description: 'Get 20% off when you buy 3 or more items',
+                    code: 'BUNDLE',
+                    min_quantity: 3,
+                    expires: '2024-12-31'
+                });
+            }
+            
+            this.renderDiscounts();
+        }
+    } catch (error) {
+        console.error('Error loading discounts:', error);
+        // Fallback discounts if API fails - ONLY include Bundle Discount
+        this.activeDiscounts = [
+            {
+                id: 'bundle_discount',
+                name: 'Bundle Discount',
+                type: 'percentage',
+                value: 20,
+                description: 'Get 20% off when you buy 3 or more items',
+                code: 'BUNDLE',
+                min_quantity: 3,
+                expires: '2024-12-31'
+            }
+        ];
+        this.renderDiscounts();
+    }
+}
+
+    renderDiscounts() {
+        const container = document.getElementById('discountsContainer');
+        if (!container) return;
+
+        // Filter out duplicate bundle discounts
+        const seenBundleDiscounts = new Set();
+        const discountsToShow = [];
+        
+        for (const discount of this.activeDiscounts) {
+            if (this.isBundleDiscount(discount)) {
+                // Only show one bundle discount
+                if (!seenBundleDiscounts.has('bundle')) {
+                    seenBundleDiscounts.add('bundle');
+                    discountsToShow.push(discount);
+                }
+            } else {
+                discountsToShow.push(discount);
+            }
+        }
+
+        container.innerHTML = discountsToShow.map(discount => {
+            const isApplied = this.appliedDiscounts.some(d => d.id === discount.id);
+            const isBundle = this.isBundleDiscount(discount);
+            const minQuantity = discount.min_quantity || (isBundle ? 3 : 0);
+            const totalQuantity = this.getTotalCartQuantity();
+            const isApplicable = !isBundle || (isBundle && totalQuantity >= minQuantity);
+            
+            return `
+            <div class="discount-card ${isApplied ? 'active' : ''}" data-discount-id="${discount.id}">
+                <div class="discount-badge">
+                    <i class="fas ${discount.type === 'percentage' ? 'fa-percentage' : 
+                                    discount.type === 'fixed' ? 'fa-dollar-sign' : 
+                                    'fa-boxes'}"></i>
+                    ${discount.type === 'percentage' ? `${discount.value}%` : 
+                     discount.type === 'fixed' ? `$${discount.value}` : 
+                     `${discount.value}% off`}
+                </div>
+                <div class="discount-title">${discount.name}</div>
+                <div class="discount-description">${discount.description}</div>
+                
+                ${minQuantity >= 3 ? `
+                <div class="discount-min-quantity ${isApplicable ? 'applicable' : 'not-applicable'}">
+                    <i class="fas ${isApplicable ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+                    ${isApplicable ? 
+                      `✓ Requires ${minQuantity}+ items (You have ${totalQuantity})` : 
+                      `✗ Requires ${minQuantity}+ items (You have ${totalQuantity})`}
+                </div>
+                ` : ''}
+                
+                ${discount.expires ? `<div class="discount-expiry">Expires: ${discount.expires}</div>` : ''}
+                
+                <button class="apply-discount-btn ${isApplied ? 'applied' : ''} ${!isApplicable ? 'disabled' : ''}" 
+                        onclick="discountManager.applyDiscount(${JSON.stringify(discount.id).replace(/"/g, '&quot;')})"
+                        ${isApplied || !isApplicable ? 'disabled' : ''}>
+                    <i class="fas ${isApplied ? 'fa-check' : 'fa-plus-circle'}"></i>
+                    ${isApplied ? 'Applied' : !isApplicable ? 'Not Eligible' : 'Apply'}
+                </button>
+            </div>
+        `}).join('');
+    }
+
+    toggleDiscounts() {
+        const container = document.getElementById('discountsContainer');
+        const toggleBtn = document.querySelector('.discounts-toggle');
+        
+        if (container.style.display === 'none') {
+            container.style.display = 'grid';
+            toggleBtn.innerHTML = '<i class="fas fa-times"></i> Hide Discounts';
+        } else {
+            container.style.display = 'none';
+            toggleBtn.innerHTML = '<i class="fas fa-percentage"></i> Show Discounts';
+        }
+    }
+
+    async applyDiscount(discountId) {
+        // Handle both string and numeric IDs
+        const discount = this.activeDiscounts.find(d => 
+            String(d.id) === String(discountId) || d.id === discountId
+        );
+        
+        if (!discount) {
+            console.error('Discount not found:', discountId);
+            return;
+        }
+
+        // Check if already applied
+        if (this.appliedDiscounts.some(d => d.id === discount.id)) {
+            this.showCouponMessage('Discount already applied!', 'info');
+            return;
+        }
+
+        // Check BUNDLE discount requirements
+        if (this.isBundleDiscount(discount)) {
+            const totalQuantity = this.getTotalCartQuantity();
+            const minQuantity = discount.min_quantity || 3;
+            
+            if (totalQuantity < minQuantity) {
+                this.showCouponMessage(
+                    `Bundle discount requires ${minQuantity} or more items in cart. You have ${totalQuantity} items.`, 
+                    'error'
+                );
+                return;
+            }
+        }
+
+        // Check if any discount is already applied
+        if (this.appliedDiscounts.length > 0) {
+            const currentDiscount = this.appliedDiscounts[0];
+            this.pendingDiscount = discount;
+            this.showConfirmationModal(currentDiscount, discount, 'discount');
+            return;
+        }
+
+        // If no discount applied, apply immediately
+        this.appliedDiscounts.push(discount);
+        this.updateAppliedDiscounts();
+        await this.updateCartPrices();
+        
+        this.renderDiscounts();
+        this.showCouponMessage(`${discount.name} applied successfully!`, 'success');
+        showNotification('Discount applied!');
+    }
+
+    async applyCoupon() {
+        const couponCode = document.getElementById('couponCode').value.trim().toUpperCase();
+        if (!couponCode) {
+            this.showCouponMessage('Please enter a coupon code', 'error');
+            return;
+        }
+
+        try {
+            const response = await fetch(`${API_BASE_URL}/discounts/validate-coupon`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ coupon_code: couponCode })
+            });
+
+            const data = await response.json();
+            
+            if (data.valid) {
+                // Check if coupon already applied
+                if (this.appliedDiscounts.some(d => d.code === couponCode)) {
+                    this.showCouponMessage('Coupon already applied!', 'info');
+                    return;
+                }
+
+                const newCoupon = {
+                    id: `coupon_${Date.now()}`,
+                    name: data.coupon.name || 'Coupon Discount',
+                    type: data.coupon.type,
+                    value: data.coupon.percentage || data.coupon.amount,
+                    description: data.coupon.description,
+                    code: couponCode,
+                    min_quantity: data.coupon.min_quantity || null
+                };
+
+                // Check BUNDLE coupon requirements
+                if (couponCode === 'BUNDLE' || couponCode === 'BULK') {
+                    const totalQuantity = this.getTotalCartQuantity();
+                    const minQuantity = newCoupon.min_quantity || 3;
+                    
+                    if (totalQuantity < minQuantity) {
+                        this.showCouponMessage(
+                            `Bundle coupon requires ${minQuantity} or more items in cart. You have ${totalQuantity} items.`, 
+                            'error'
+                        );
+                        return;
+                    }
+                }
+
+                // Check if any discount is already applied
+                if (this.appliedDiscounts.length > 0) {
+                    const currentDiscount = this.appliedDiscounts[0];
+                    this.pendingCoupon = newCoupon;
+                    this.showConfirmationModal(currentDiscount, newCoupon, 'coupon');
+                    return;
+                }
+
+                // If no discount applied, apply immediately
+                this.appliedDiscounts.push(newCoupon);
+                this.updateAppliedDiscounts();
+                await this.updateCartPrices();
+                document.getElementById('couponCode').value = '';
+                this.showCouponMessage('Coupon applied successfully!', 'success');
+                showNotification('Coupon applied!');
+            } else {
+                this.showCouponMessage(data.message, 'error');
+            }
+        } catch (error) {
+            console.error('Error applying coupon:', error);
+            
+            // Handle BUNDLE coupon locally if API fails
+            if (couponCode === 'BUNDLE') {
+                const totalQuantity = this.getTotalCartQuantity();
+                if (totalQuantity < 3) {
+                    this.showCouponMessage(
+                        `Bundle coupon requires 3 or more items in cart. You have ${totalQuantity} items.`, 
+                        'error'
+                    );
+                    return;
+                }
+                
+                // Check if BUNDLE already applied
+                if (this.appliedDiscounts.some(d => d.code === 'BUNDLE')) {
+                    this.showCouponMessage('Bundle coupon already applied!', 'info');
+                    return;
+                }
+
+                const newCoupon = {
+                    id: `coupon_${Date.now()}`,
+                    name: 'Bundle Discount',
+                    type: 'percentage',
+                    value: 20,
+                    description: '20% off when you buy 3 or more items',
+                    code: 'BUNDLE',
+                    min_quantity: 3
+                };
+
+                // Check if any discount is already applied
+                if (this.appliedDiscounts.length > 0) {
+                    const currentDiscount = this.appliedDiscounts[0];
+                    this.pendingCoupon = newCoupon;
+                    this.showConfirmationModal(currentDiscount, newCoupon, 'coupon');
+                    return;
+                }
+
+                // If no discount applied, apply immediately
+                this.appliedDiscounts.push(newCoupon);
+                this.updateAppliedDiscounts();
+                await this.updateCartPrices();
+                document.getElementById('couponCode').value = '';
+                this.showCouponMessage('Bundle coupon applied successfully!', 'success');
+                showNotification('Bundle coupon applied!');
+            } else {
+                this.showCouponMessage('Invalid coupon code', 'error');
+            }
+        }
+    }
+
+    showConfirmationModal(currentDiscount, newDiscount, type) {
+        // Set modal content
+        document.getElementById('currentDiscountName').textContent = currentDiscount.name;
+        document.getElementById('newDiscountName').textContent = newDiscount.name;
+        
+        // Format discount values for display
+        const currentValue = currentDiscount.type === 'percentage' ? 
+            `${currentDiscount.value}% OFF` : 
+            `$${currentDiscount.value} OFF`;
+        
+        const newValue = newDiscount.type === 'percentage' ? 
+            `${newDiscount.value}% OFF` : 
+            `$${newDiscount.value} OFF`;
+        
+        document.getElementById('currentDiscountValue').textContent = currentValue;
+        document.getElementById('newDiscountValue').textContent = newValue;
+        
+        // Set up confirm button handler
+        const confirmBtn = document.getElementById('confirmReplaceBtn');
+        const manager = this; // Store reference to this
+        
+        confirmBtn.onclick = function() {
+            if (type === 'discount') {
+                manager.confirmReplaceDiscount();
+            } else {
+                manager.confirmReplaceCoupon();
+            }
+        };
+        
+        // Show modal
+        const modal = document.getElementById('discountConfirmationModal');
+        modal.classList.add('show');
+        modal.style.display = 'block';
+    }
+
+    confirmReplaceDiscount() {
+        if (!this.pendingDiscount) return;
+        
+        // Remove current discount
+        const currentDiscountId = this.appliedDiscounts[0]?.id;
+        if (currentDiscountId) {
+            this.removeDiscount(currentDiscountId);
+        }
+        
+        // Apply new discount
+        this.appliedDiscounts.push(this.pendingDiscount);
+        this.updateAppliedDiscounts();
+        this.updateCartPrices();
+        this.renderDiscounts();
+        
+        this.showCouponMessage(`Replaced with ${this.pendingDiscount.name}`, 'success');
+        showNotification('Discount replaced!');
+        
+        this.pendingDiscount = null;
+        closeConfirmationModal();
+    }
+
+    confirmReplaceCoupon() {
+        if (!this.pendingCoupon) return;
+        
+        // Remove current discount
+        const currentDiscountId = this.appliedDiscounts[0]?.id;
+        if (currentDiscountId) {
+            this.removeDiscount(currentDiscountId);
+        }
+        
+        // Apply new coupon
+        this.appliedDiscounts.push(this.pendingCoupon);
+        this.updateAppliedDiscounts();
+        this.updateCartPrices();
+        document.getElementById('couponCode').value = '';
+        
+        this.showCouponMessage(`Coupon applied successfully!`, 'success');
+        showNotification('Coupon applied!');
+        
+        this.pendingCoupon = null;
+        closeConfirmationModal();
+    }
+
+    updateAppliedDiscounts() {
+        const container = document.getElementById('appliedDiscountsList');
+        if (!container) return;
+
+        if (this.appliedDiscounts.length === 0) {
+            container.innerHTML = '<p class="no-discounts">No discounts applied</p>';
+            return;
+        }
+
+        // Display only the first applied discount
+        const discount = this.appliedDiscounts[0];
+        container.innerHTML = `
+            <div class="applied-discount-item" data-discount-id="${discount.id}">
+                <span class="applied-discount-name">
+                    <i class="fas fa-tag"></i>
+                    ${discount.name}
+                </span>
+                <span class="applied-discount-value">
+                    ${discount.type === 'percentage' ? `-${discount.value}%` : 
+                      discount.type === 'fixed' ? `-$${discount.value}` : 
+                      `-${discount.value}%`}
+                </span>
+                <button class="remove-discount-btn" onclick="discountManager.removeDiscount('${discount.id}')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        `;
+    }
+
+    removeDiscount(discountId) {
+        this.appliedDiscounts = this.appliedDiscounts.filter(d => d.id !== discountId);
+        this.updateAppliedDiscounts();
+        this.updateCartPrices();
+        
+        // Re-render discount cards to update buttons
+        this.renderDiscounts();
+        
+        showNotification('Discount removed');
+    }
+
+    async updateCartPrices() {
+        console.log('🔄 Updating cart prices with discounts...');
+        
+        // Only apply discount if we have one
+        if (this.appliedDiscounts.length === 0) {
+            console.log('No discount applied');
+            
+            // Reset all cart items to original price
+            for (const cartItem of this.cartItems) {
+                if (cartItem.product) {
+                    this.updateCartItemDisplay(
+                        cartItem.id, 
+                        cartItem.product.price, 
+                        null, // No discounted price
+                        cartItem.quantity
+                    );
+                }
+            }
+        } else {
+            // Apply the first discount only
+            const discount = this.appliedDiscounts[0];
+            console.log(`Applying discount: ${discount.name}`);
+            
+            // Check if bundle discount requirements are still met
+            if (this.isBundleDiscount(discount)) {
+                const totalQuantity = this.getTotalCartQuantity();
+                const minQuantity = discount.min_quantity || 3;
+                
+                if (totalQuantity < minQuantity) {
+                    // Remove discount if requirements no longer met
+                    this.showCouponMessage(
+                        `Bundle discount removed. You need ${minQuantity} items, but only have ${totalQuantity}.`,
+                        'error'
+                    );
+                    this.removeDiscount(discount.id);
+                    return;
+                }
+            }
+            
+            for (const cartItem of this.cartItems) {
+                if (cartItem.product) {
+                    const discountedPrice = await this.calculateDiscountedPrice(
+                        cartItem.product.id, 
+                        cartItem.quantity,
+                        discount
+                    );
+                    
+                    this.updateCartItemDisplay(
+                        cartItem.id, 
+                        cartItem.product.price, 
+                        discountedPrice, 
+                        cartItem.quantity
+                    );
+                }
+            }
+        }
+        
+        // Update cart summary
+        await this.updateCartSummary();
+    }
+
+   async  calculateDiscountedPrice(productId, quantity, discount) {
+    console.log(`🔍 Calculating discount for product ${productId}, quantity ${quantity}`);
+    console.log(`🔍 Using discount:`, discount);
+    
+    try {
+        // For bulk/bundle discounts, check if quantity meets minimum
+        if (discount.min_quantity && quantity < discount.min_quantity) {
+            console.log(`❌ Quantity ${quantity} doesn't meet minimum ${discount.min_quantity}`);
+            return null;
+        }
+        
+        // For simplicity, calculate directly without API call
+        // This ensures consistent pricing
+        const mockPrice = 100; // Base price for calculation
+        let finalPrice = mockPrice * quantity;
+        
+        if (discount.type === 'percentage' && discount.value) {
+            const discountAmount = finalPrice * (discount.value / 100);
+            finalPrice = finalPrice - discountAmount;
+            console.log(`✅ Applied ${discount.value}% discount: $${finalPrice}`);
+        } 
+        else if (discount.type === 'fixed' && discount.value) {
+            finalPrice = Math.max(0, finalPrice - discount.value);
+            console.log(`✅ Applied $${discount.value} fixed discount: $${finalPrice}`);
+        }
+        
+        return finalPrice;
+        
+    } catch (error) {
+        console.error('❌ Error calculating discount:', error);
+        return null;
+    }
+}
+
+ updateCartItemDisplay(itemId, originalPrice, discountedPrice, quantity) {
+    const itemElement = document.querySelector(`[data-item-id="${itemId}"]`);
+    if (!itemElement) return;
+
+    const priceContainer = itemElement.querySelector('.price-container');
+    if (priceContainer) {
+        const originalTotal = originalPrice * quantity;
+        
+        if (discountedPrice && discountedPrice < originalTotal) {
+            const savings = originalTotal - discountedPrice;
+            priceContainer.innerHTML = `
+                <div class="price-info">
+                    <span class="original-price">$${originalTotal.toFixed(2)}</span>
+                    <span class="discounted-price">$${discountedPrice.toFixed(2)}</span>
+                </div>
+                <span class="savings-badge">
+                    <i class="fas fa-piggy-bank"></i>
+                    Save $${savings.toFixed(2)}
+                </span>
+            `;
+            
+            // Save the discounted price in the cart item for checkout
+            const cartItem = this.cartItems.find(item => item.id === itemId);
+            if (cartItem) {
+                cartItem.discountedPrice = discountedPrice;
+            }
+        } else {
+            priceContainer.innerHTML = `
+                <div class="price-info">
+                    <span class="discounted-price">$${originalTotal.toFixed(2)}</span>
+                </div>
+            `;
+            
+            // Clear discounted price
+            const cartItem = this.cartItems.find(item => item.id === itemId);
+            if (cartItem) {
+                cartItem.discountedPrice = null;
+            }
+        }
+    }
+}
+async  updateCartSummary() {
+    console.log('🔄 Updating cart summary...');
+    
+    let subtotal = 0;
+    let totalSavings = 0;
+    
+    // Calculate based on actual displayed prices
+    for (const cartItem of this.cartItems) {
+        if (cartItem.product) {
+            const itemElement = document.querySelector(`[data-item-id="${cartItem.id}"]`);
+            let itemTotal = cartItem.product.price * cartItem.quantity;
+            
+            // Check if item has discounted price
+            if (cartItem.discountedPrice) {
+                itemTotal = cartItem.discountedPrice;
+                const originalTotal = cartItem.product.price * cartItem.quantity;
+                totalSavings += (originalTotal - itemTotal);
+            }
+            
+            subtotal += itemTotal;
+        }
+    }
+    
+    // Update summary display
+    const summaryElement = document.getElementById('cartSummary');
+    if (summaryElement) {
+        const shipping = subtotal > 50 ? 0 : 5.99;
+        const tax = subtotal * 0.08;
+        const grandTotal = subtotal + shipping + tax;
+        
+        summaryElement.innerHTML = `
+            <h3 class="summary-title">Order Summary</h3>
+            ${this.appliedDiscounts.length > 0 ? `
+            <div class="summary-discount-applied">
+                <i class="fas fa-tag"></i>
+                <span>${this.appliedDiscounts[0].name} Applied</span>
+            </div>
+            ` : ''}
+            <div class="summary-row">
+                <span class="summary-label">Subtotal</span>
+                <span class="summary-value">$${subtotal.toFixed(2)}</span>
+            </div>
+            ${totalSavings > 0 ? `
+            <div class="summary-row">
+                <span class="summary-label">Total Savings</span>
+                <span class="summary-value total-savings">-$${totalSavings.toFixed(2)}</span>
+            </div>
+            ` : ''}
+            <div class="summary-row">
+                <span class="summary-label">Shipping</span>
+                <span class="summary-value">${shipping === 0 ? 'Free' : '$' + shipping.toFixed(2)}</span>
+            </div>
+            <div class="summary-row">
+                <span class="summary-label">Tax</span>
+                <span class="summary-value">$${tax.toFixed(2)}</span>
+            </div>
+            <div class="summary-row">
+                <span class="summary-label">Total</span>
+                <span class="summary-value">$${grandTotal.toFixed(2)}</span>
+            </div>
+            <button class="checkout-btn" onclick="goToCheckout()">
+                <i class="fas fa-lock"></i>
+                Proceed to Checkout
+            </button>
+        `;
+    }
+}
+    showCouponMessage(message, type = 'info') {
+        const messageDiv = document.getElementById('couponMessage');
+        if (messageDiv) {
+            messageDiv.textContent = message;
+            messageDiv.className = `coupon-message ${type}`;
+            
+            setTimeout(() => {
+                messageDiv.textContent = '';
+                messageDiv.className = 'coupon-message';
+            }, 5000);
+        }
+    }
+
+    setupEventListeners() {
+        const couponInput = document.getElementById('couponCode');
+        if (couponInput) {
+            couponInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    this.applyCoupon();
+                }
+            });
+        }
+    }
+}
+
+// Initialize discount manager
+const discountManager = new DiscountManager();
+
+// Cart Functions
+async function fetchCart() {
+    try {
+        const sessionId = getSessionId();
+        const response = await fetch(`${API_BASE_URL}/cart?session_id=${sessionId}`);
+        const data = await response.json();
+        
+        if (data.success) {
+            renderCart(data.items);
+            discountManager.cartItems = data.items;
+            
+            // Update discount eligibility after cart loads
+            discountManager.renderDiscounts();
+            discountManager.updateCartSummary();
+        } else {
+            showEmptyCart();
+        }
+    } catch (error) {
+        console.error('Error fetching cart:', error);
+        showEmptyCart();
+    }
+}
+
+function renderCart(cartItems) {
+    const cartItemsContainer = document.getElementById('cartItems');
+    
+    if (!cartItems || cartItems.length === 0) {
+        showEmptyCart();
+        return;
+    }
+    
+    cartItemsContainer.innerHTML = '';
+    
+    cartItems.forEach(item => {
+        if (item.product) {
+            const cartItem = document.createElement('div');
+            cartItem.className = 'cart-item';
+            cartItem.dataset.itemId = item.id;
+            cartItem.innerHTML = `
+                <div class="cart-item-image">
+                    <img src="${item.product.image}" alt="${item.product.name}" 
+                         onerror="this.src='https://images.unsplash.com/photo-1556656793-08538906a9f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60'">
+                </div>
+                <div class="cart-item-details">
+                    <h3 class="cart-item-name">${item.product.name}</h3>
+                    <div class="cart-item-category">${item.product.category}</div>
+                    <div class="price-container">
+                        <span class="discounted-price">$${(item.product.price * item.quantity).toFixed(2)}</span>
+                    </div>
+                    <div class="cart-item-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" onclick="updateCartItemQuantity(${item.id}, ${item.quantity - 1})">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <span class="quantity">${item.quantity}</span>
+                            <button class="quantity-btn" onclick="updateCartItemQuantity(${item.id}, ${item.quantity + 1})">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <button class="remove-btn" onclick="removeCartItem(${item.id})">
+                            <i class="fas fa-trash"></i>
+                            Remove
+                        </button>
+                    </div>
+                </div>
+            `;
+            cartItemsContainer.appendChild(cartItem);
+        }
+    });
+    
+    // Update prices with discounts
+    discountManager.updateCartPrices();
+}
+
+function showEmptyCart() {
+    const cartItemsContainer = document.getElementById('cartItems');
+    const cartSummary = document.getElementById('cartSummary');
+    
+    if (cartItemsContainer) {
+        cartItemsContainer.innerHTML = `
+            <div class="empty-cart">
+                <div class="empty-cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <h3>Your cart is empty</h3>
+                <p>Looks like you haven't added any items to your cart yet.</p>
+                <a href="products.html" class="continue-shopping">
+                    <i class="fas fa-shopping-bag"></i>
+                    Continue Shopping
+                </a>
+            </div>
+        `;
+    }
+    
+    if (cartSummary) {
+        cartSummary.innerHTML = '';
+    }
+}
+
+async function updateCartItemQuantity(itemId, newQuantity) {
+    try {
+        if (newQuantity <= 0) {
+            await removeCartItem(itemId);
+            return;
+        }
+        
+        const response = await fetch(`${API_BASE_URL}/cart/${itemId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                quantity: newQuantity
+            })
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            await fetchCart();
+            showNotification('Cart updated successfully');
+        } else {
+            showNotification('Failed to update cart', 'error');
+        }
+    } catch (error) {
+        console.error('Error updating cart item:', error);
+        showNotification('Failed to update cart', 'error');
+    }
+}
+
+async function removeCartItem(itemId) {
+    try {
+        const response = await fetch(`${API_BASE_URL}/cart/${itemId}`, {
+            method: 'DELETE'
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            await fetchCart();
+            showNotification('Item removed from cart');
+        } else {
+            showNotification('Failed to remove item', 'error');
+        }
+    } catch (error) {
+        console.error('Error removing cart item:', error);
+        showNotification('Failed to remove item', 'error');
+    }
+}
+
+function goToCheckout() {
+    console.log('📦 Saving cart state for checkout...');
+    
+    // Prepare cart items with final prices
+    const cartState = {
+        items: discountManager.cartItems.map(item => {
+            const finalPrice = item.discountedPrice || (item.product.price * item.quantity);
+            return {
+                ...item,
+                final_price: finalPrice,
+                original_price: item.product.price * item.quantity
+            };
+        }),
+        appliedDiscounts: discountManager.appliedDiscounts,
+        calculatedTotals: calculateCurrentTotals()
+    };
+    
+    console.log('💾 Cart state saved:', cartState);
+    localStorage.setItem('checkoutCartState', JSON.stringify(cartState));
+    
+    // Also save applied discounts separately
+    localStorage.setItem('checkoutAppliedDiscounts', JSON.stringify(discountManager.appliedDiscounts));
+    
+    // Redirect to checkout page
+    window.location.href = 'checkout.html';
+}
+
+function calculateCurrentTotals() {
+    let subtotal = 0;
+    let totalSavings = 0;
+    
+    discountManager.cartItems.forEach(item => {
+        const originalTotal = item.product.price * item.quantity;
+        let finalTotal = originalTotal;
+        
+        // Check if item has discounted price
+        if (item.discountedPrice) {
+            finalTotal = item.discountedPrice;
+            totalSavings += originalTotal - finalTotal;
+        }
+        
+        subtotal += finalTotal;
+    });
+    
+    const shipping = subtotal > 50 ? 0 : 5.99;
+    const tax = subtotal * 0.08;
+    const total = subtotal + shipping + tax;
+    
+    return {
+        subtotal,
+        totalSavings,
+        shipping,
+        tax,
+        total
+    };
+}
+function showNotification(message, type = 'success') {
+    const existingNotification = document.querySelector('.cart-notification');
+    if (existingNotification) {
+        existingNotification.remove();
+    }
+
+    const notification = document.createElement('div');
+    notification.className = 'cart-notification';
+    notification.style.background = type === 'success' ? 'var(--success)' : 'var(--error)';
+    notification.innerHTML = `
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+            <span>${message}</span>
+        </div>
+    `;
+
+    document.body.appendChild(notification);
+
+    setTimeout(() => {
+        if (notification.parentNode) {
+            notification.remove();
+        }
+    }, 3000);
+}
+// Add this function to your cart.html page
+function proceedToCheckout() {
+    // Save current cart state to localStorage
+    const cartState = {
+        items: cartItems.map(item => ({
+            ...item,
+            final_price: calculateItemPrice(item) // Save the final price including discounts
+        })),
+        appliedDiscounts: appliedDiscounts
+    };
+    
+    localStorage.setItem('checkoutCartState', JSON.stringify(cartState));
+    localStorage.setItem('checkoutAppliedDiscounts', JSON.stringify(appliedDiscounts));
+    
+    // Redirect to checkout page
+    window.location.href = 'checkout.html';
+}
+
+
+
+// Event Listeners for Modal
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('discountConfirmationModal');
+    if (modal) {
+        // Close when clicking on overlay
+        modal.addEventListener('click', function(e) {
+            if (e.target.classList.contains('modal-overlay') || e.target.classList.contains('custom-modal')) {
+                closeConfirmationModal();
+            }
+        });
+        
+        // Close with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.style.display === 'block') {
+                closeConfirmationModal();
+            }
+        });
+    }
+    
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            if (document.body.classList.contains("light")) {
+                document.body.classList.remove("light");
+                document.body.classList.add("dark");
+                themeToggle.textContent = "Light Mode";
+            } else {
+                document.body.classList.remove("dark");
+                document.body.classList.add("light");
+                themeToggle.textContent = "Dark Mode";
+            }
+        });
+    }
+    
+    // Initialize cart
+    fetchCart();
+});
+</script>
+
+
+<footer>
+  <div class="container footer-content">
+    
+    <!-- Brand Section -->
+    <div class="footer-section brand-section">
+      <h3 class="footer-logo">ShopEase</h3>
+      <p class="footer-description">
+        Everyone's Favourite Go To Online Store.
+      </p>
+    </div>
+
+    <!-- Quick Links Section -->
+    <div class="footer-section links-section">
+      <h4 class="footer-heading">Quick Links</h4>
+      <ul class="footer-menu">
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="disclaimer.html">Disclaimer</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Social Media Section -->
+    <div class="footer-section social-section">
+      <h4 class="footer-heading">Follow Us</h4>
+      <div class="social-icons">
+        <a href="Your insta link" target="_blank" aria-label="Instagram" class="social-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm0 2h10c1.654 0 3 1.346 3 3v10c0 1.654-1.346 3-3 3H7c-1.654 0-3-1.346-3-3V7c0-1.654 1.346-3 3-3zm5 2a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6zm4.5-.25a1.25 1.25 0 11-2.5 0 1.25 1.25 0 012.5 0z"/>
+          </svg>
+        </a>
+        <a href="Your linkedin link" target="_blank" aria-label="LinkedIn" class="social-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M19 0h-14c-2.8 0-5 2.2-5 5v14c0 2.8 2.2 5 5 5h14c2.8 0 5-2.2 5-5v-14c0-2.8-2.2-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.3c-1 0-1.8-.8-1.8-1.8s.8-1.8 1.8-1.8c1 0 1.8.8 1.8 1.8s-.8 1.8-1.8 1.8zm13.5 10.3h-3v-4.7c0-1.1-.4-1.9-1.5-1.9-.8 0-1.3.5-1.6 1-.1.2-.1.5-.1.7v4.9h-3v-9h3v1.2c.4-.7 1.3-1.7 3-1.7 2.2 0 3.8 1.5 3.8 4.6v4.9z"/>
+          </svg>
+        </a>
+        <a href="Your facebook link" target="_blank" aria-label="Facebook" class="social-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 5 3.66 9.13 8.44 9.88v-6.99H8v-2.89h2.44v-2.21c0-2.4 1.44-3.72 3.62-3.72 1.05 0 2.15.19 2.15.19v2.37h-1.21c-1.19 0-1.56.74-1.56 1.49v1.88H16l-.48 2.89h-2.24v6.99C18.34 21.13 22 17 22 12z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Copyright -->
+  <div class="copyright">
+    <p>© 2025 ShopEase. All Rights Reserved.</p>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopEase - Order Confirmation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #131321;
+            --text: #E6E6E6;
+            --accent: #46F0D2;
+            --accent-secondary: #131321;
+            --card: #1E1E2E;
+            --border: #2A2A3A;
+            --logo-color: #46F0D2;
+            --luxury-bg-1: rgba(70,240,210,0.10);
+            --luxury-bg-2: rgba(251,226,180,0.15);
+        }
+
+        body.light {
+            --bg: #D9A77B;
+            --text: #5A3A22;
+            --accent: #5A3A22;
+            --accent-secondary: #E7C9A4;
+            --card: #F3D7B9;
+            --border: #CFA97E;
+            --logo-color: #5A3A22;
+            --luxury-bg-1: rgba(90,58,34,0.15);
+            --luxury-bg-2: rgba(201,150,106,0.20);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            transition: 0.4s ease;
+            min-height: 100vh;
+        }
+
+        .background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+
+        .dark-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(70,240,210,0.12) 0%, transparent 55%),
+                radial-gradient(circle at 80% 20%, rgba(251,226,180,0.10) 0%, transparent 55%),
+                linear-gradient(135deg, #0E0E1A 0%, #17172A 50%, #0E0E1A 100%);
+        }
+
+        .light-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(90,58,34,0.10) 0%, transparent 55%),
+                radial-gradient(circle at 70% 20%, rgba(201,150,106,0.10) 0%, transparent 55%),
+                linear-gradient(135deg, #F3D7B9 0%, #DAA97C 55%, #C79269 100%);
+        }
+
+        body.dark .dark-bg { display: block; }
+        body.dark .light-bg { display: none; }
+        body.light .light-bg { display: block; }
+        body.light .dark-bg { display: none; }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: var(--bg);
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+        .navbar ul {display:flex; gap:30px; list-style:none;}
+        .navbar a {
+            color: var(--text);
+            font-weight: 600;
+            text-decoration:none;
+            transition:0.3s;
+        }
+        .navbar a:hover {color: var(--accent);}        
+        .theme-toggle {
+            background: var(--accent);
+            border:none;
+            padding:10px 20px;
+            color:var(--bg);
+            border-radius:20px;
+            cursor:pointer;
+            font-weight:600;
+            transition:0.3s;
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            color: var(--logo-color);
+        }
+
+        .receipt-container {
+            padding: 40px 8%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .success-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            color: #2ecc71;
+            margin-bottom: 20px;
+        }
+
+        .success-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+
+        .success-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+
+        .order-number {
+            background: var(--accent);
+            color: var(--bg);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .receipt-card {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid var(--border);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--text);
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 10px;
+        }
+
+        .order-items {
+            margin-bottom: 30px;
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .order-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex: 1;
+        }
+
+        .item-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .item-details h4 {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .item-details .category {
+            font-size: 0.8rem;
+            color: var(--accent);
+            text-transform: uppercase;
+        }
+
+        .item-quantity {
+            color: var(--text);
+            opacity: 0.7;
+        }
+
+        .item-price {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .summary-row:last-child {
+            border-bottom: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--accent);
+        }
+
+        .shipping-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .info-group {
+            margin-bottom: 15px;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: var(--text);
+            opacity: 0.8;
+            margin-bottom: 5px;
+        }
+
+        .info-value {
+            color: var(--text);
+        }
+
+        .delivery-info {
+            background: rgba(70, 240, 210, 0.1);
+            border: 1px solid var(--accent);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .delivery-date {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
+        .btn-primary:hover {
+            background: var(--text);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 2px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--border);
+            transform: translateY(-2px);
+        }
+
+        /* Loading animation */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--border);
+            border-top: 4px solid var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .receipt-container {
+                padding: 20px 5%;
+            }
+            
+            .shipping-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .item-info {
+                flex-direction: column;
+                align-items: start;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body class="dark">
+
+<div class="background-container">
+    <div class="dark-bg"></div>
+    <div class="light-bg"></div>
+</div>
+
+<header>
+    <nav class="navbar">
+        <h2 class="logo">ShopEase</h2>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="cart.html">Cart</a></li>
+        </ul>
+        <button class="theme-toggle" id="themeToggle">Light Mode</button>
+    </nav>
+</header>
+
+<div class="receipt-container">
+    <div class="success-header">
+        <div class="success-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <h1 class="success-title">Order Confirmed!</h1>
+        <p class="success-subtitle">Thank you for your purchase. Your order has been successfully placed.</p>
+        <div class="order-number" id="orderNumber">ORD-123456</div>
+    </div>
+
+    <div class="receipt-card">
+        <h3 class="section-title">Order Details</h3>
+        <div class="order-items" id="orderItems">
+            <div class="loading">
+                <div class="loading-spinner"></div>
+            </div>
+        </div>
+        
+        <div class="order-summary">
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <span id="subtotal">$0.00</span>
+            </div>
+            <div class="summary-row">
+                <span>Shipping</span>
+                <span id="shipping">$0.00</span>
+            </div>
+            <div class="summary-row">
+                <span>Tax</span>
+                <span id="tax">$0.00</span>
+            </div>
+            <div class="summary-row">
+                <span>Total</span>
+                <span id="total">$0.00</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="receipt-card">
+        <h3 class="section-title">Shipping Information</h3>
+        <div class="shipping-info" id="shippingInfo">
+            <div class="loading">
+                <div class="loading-spinner"></div>
+            </div>
+        </div>
+        
+        <div class="delivery-info">
+            <div class="delivery-date" id="deliveryDate">
+                Estimated Delivery: Loading...
+            </div>
+            <p>Your order will be delivered to the address provided. You will receive a tracking number via email once your order ships.</p>
+        </div>
+    </div>
+
+    <div class="action-buttons">
+        <button class="btn btn-primary" onclick="downloadReceipt()">
+            <i class="fas fa-download"></i>
+            Download Receipt
+        </button>
+        <a href="products.html" class="btn btn-secondary">
+            <i class="fas fa-shopping-bag"></i>
+            Continue Shopping
+        </a>
+    </div>
+</div>
+
+<script>
+   // Theme toggle functionality
+document.querySelector(".theme-toggle").addEventListener("click", () => {
+    if (document.body.classList.contains("light")) {
+        document.body.classList.remove("light");
+        document.body.classList.add("dark");
+        document.querySelector(".theme-toggle").textContent = "Light Mode";
+    } else {
+        document.body.classList.remove("dark");
+        document.body.classList.add("light");
+        document.querySelector(".theme-toggle").textContent = "Dark Mode";
+    }
+});
+
+// API Configuration
+const API_BASE_URL = 'http://localhost:5000/api';
+
+// Try to load order data from localStorage first, then from backend
+async function loadOrderData() {
+    console.log('Loading order data...');
+    
+    // First, check localStorage
+    const savedOrderData = localStorage.getItem('currentOrder');
+    
+    if (savedOrderData) {
+        try {
+            const orderData = JSON.parse(savedOrderData);
+            console.log('Found order data in localStorage:', orderData);
+            renderReceipt(orderData);
+            return;
+        } catch (error) {
+            console.error('Error parsing saved order data:', error);
+            // Continue to try backend
+        }
+    }
+    
+    // If no localStorage data, try to get latest order from backend
+    try {
+        const sessionId = localStorage.getItem('shopease_session_id');
+        if (!sessionId) {
+            console.log('No session ID found');
+            createSampleDataForDebugging();
+            return;
+        }
+        
+        // In a real app, you would have an endpoint to get latest order
+        // For now, we'll use localStorage
+        createSampleDataForDebugging();
+        
+    } catch (error) {
+        console.error('Error loading order from backend:', error);
+        createSampleDataForDebugging();
+    }
+}
+
+// Create sample data for debugging (fallback)
+function createSampleDataForDebugging() {
+    console.log('Creating sample data for receipt');
+    
+    const sampleOrder = {
+        orderNumber: 'ORD-' + Math.floor(100000 + Math.random() * 900000),
+        orderDate: new Date().toISOString(),
+        estimatedDelivery: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
+        items: [
+            {
+                id: 1,
+                name: 'UltraSlim Pro Laptop',
+                price: 1299.99,
+                quantity: 1,
+                image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400',
+                category: 'Electronics'
+            },
+            {
+                id: 2,
+                name: 'NoiseCancel Pro Headphones',
+                price: 349.99,
+                quantity: 1,
+                image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400',
+                category: 'Audio'
+            }
+        ],
+        totals: {
+            subtotal: 1649.98,
+            shipping: 0,
+            tax: 132.00,
+            total: 1781.98
+        },
+        shipping: {
+            firstName: 'John',
+            lastName: 'Doe',
+            email: 'john.doe@example.com',
+            phone: '(555) 123-4567',
+            address: '123 Main Street',
+            city: 'New York',
+            state: 'NY',
+            zipCode: '10001',
+            country: 'United States'
+        }
+    };
+    
+    renderReceipt(sampleOrder);
+    
+    // Show debug message
+    const successTitle = document.querySelector('.success-title');
+    if (successTitle) {
+        successTitle.innerHTML = 'Order Confirmed! <small style="font-size: 0.5em; display: block; margin-top: 5px; color: #ff6b6b;">(Sample Data)</small>';
+    }
+}
+
+// Render receipt with order data
+function renderReceipt(orderData) {
+    console.log('Rendering receipt with data:', orderData);
+    
+    if (!orderData) {
+        console.error('No order data to render');
+        return;
+    }
+
+    try {
+        // Set order number
+        const orderNumberEl = document.getElementById('orderNumber');
+        if (orderNumberEl && orderData.orderNumber) {
+            orderNumberEl.textContent = orderData.orderNumber;
+        }
+
+        // Render order items
+        const orderItemsEl = document.getElementById('orderItems');
+        if (orderItemsEl && orderData.items) {
+            orderItemsEl.innerHTML = orderData.items.map(item => {
+                const name = item.name || 'Product';
+                const price = parseFloat(item.price) || 0;
+                const quantity = parseInt(item.quantity) || 1;
+                const image = item.image || 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400';
+                const category = item.category || 'General';
+                
+                return `
+                    <div class="order-item">
+                        <div class="item-info">
+                            <div class="item-image">
+                                <img src="${image}" alt="${name}" onerror="this.src='https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400'">
+                            </div>
+                            <div class="item-details">
+                                <h4>${name}</h4>
+                                <div class="category">${category}</div>
+                            </div>
+                        </div>
+                        <div class="item-quantity">x${quantity}</div>
+                        <div class="item-price">$${(price * quantity).toFixed(2)}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Render totals
+        if (orderData.totals) {
+            const subtotalEl = document.getElementById('subtotal');
+            const shippingEl = document.getElementById('shipping');
+            const taxEl = document.getElementById('tax');
+            const totalEl = document.getElementById('total');
+            
+            if (subtotalEl) subtotalEl.textContent = `$${(orderData.totals.subtotal || 0).toFixed(2)}`;
+            if (shippingEl) shippingEl.textContent = (orderData.totals.shipping === 0 || orderData.totals.shipping === '0') ? 'FREE' : `$${(parseFloat(orderData.totals.shipping) || 0).toFixed(2)}`;
+            if (taxEl) taxEl.textContent = `$${(orderData.totals.tax || 0).toFixed(2)}`;
+            if (totalEl) totalEl.textContent = `$${(orderData.totals.total || 0).toFixed(2)}`;
+        }
+
+        // Render shipping info
+        const shippingInfoEl = document.getElementById('shippingInfo');
+        if (shippingInfoEl && orderData.shipping) {
+            const ship = orderData.shipping;
+            shippingInfoEl.innerHTML = `
+                <div class="info-group">
+                    <div class="info-label">Full Name</div>
+                    <div class="info-value">${ship.firstName || ''} ${ship.lastName || ''}</div>
+                </div>
+                <div class="info-group">
+                    <div class="info-label">Email</div>
+                    <div class="info-value">${ship.email || ''}</div>
+                </div>
+                <div class="info-group">
+                    <div class="info-label">Phone</div>
+                    <div class="info-value">${ship.phone || ''}</div>
+                </div>
+                <div class="info-group">
+                    <div class="info-label">Address</div>
+                    <div class="info-value">${ship.address || ''}</div>
+                </div>
+                <div class="info-group">
+                    <div class="info-label">City, State, ZIP</div>
+                    <div class="info-value">${ship.city || ''}, ${ship.state || ''} ${ship.zipCode || ''}</div>
+                </div>
+                <div class="info-group">
+                    <div class="info-label">Country</div>
+                    <div class="info-value">${ship.country || ''}</div>
+                </div>
+            `;
+        }
+
+        // Set delivery date
+        const deliveryDateEl = document.getElementById('deliveryDate');
+        if (deliveryDateEl && orderData.estimatedDelivery) {
+            try {
+                const deliveryDate = new Date(orderData.estimatedDelivery);
+                deliveryDateEl.textContent = 
+                    `Estimated Delivery: ${deliveryDate.toLocaleDateString('en-US', { 
+                        weekday: 'long', 
+                        year: 'numeric', 
+                        month: 'long', 
+                        day: 'numeric' 
+                    })}`;
+            } catch (e) {
+                deliveryDateEl.textContent = 'Estimated Delivery: To be determined';
+            }
+        }
+        
+        console.log('Receipt rendered successfully');
+        
+    } catch (error) {
+        console.error('Error rendering receipt:', error);
+    }
+}
+
+// Download receipt as PDF
+function downloadReceipt() {
+    const orderData = JSON.parse(localStorage.getItem('currentOrder') || '{}');
+    
+    if (!orderData || !orderData.orderNumber) {
+        alert('No order data available to download.');
+        return;
+    }
+
+    // Create a printable receipt
+    const receiptContent = `
+        <html>
+        <head>
+            <title>Receipt - ${orderData.orderNumber || 'Order'}</title>
+            <style>
+                body { font-family: Arial, sans-serif; margin: 40px; }
+                .header { text-align: center; margin-bottom: 30px; }
+                .order-number { font-size: 18px; font-weight: bold; margin: 10px 0; }
+                .section { margin-bottom: 20px; }
+                .section-title { font-weight: bold; border-bottom: 2px solid #000; padding-bottom: 5px; margin-bottom: 10px; }
+                .item { display: flex; justify-content: space-between; margin: 5px 0; }
+                .total { font-weight: bold; font-size: 16px; border-top: 2px solid #000; padding-top: 10px; }
+                .thank-you { text-align: center; margin-top: 30px; font-style: italic; }
+            </style>
+        </head>
+        <body>
+            <div class="header">
+                <h1>ShopEase</h1>
+                <div class="order-number">Order: ${orderData.orderNumber || 'N/A'}</div>
+                <div>Date: ${new Date(orderData.orderDate || Date.now()).toLocaleDateString()}</div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">Order Items</div>
+                ${(orderData.items || []).map(item => `
+                    <div class="item">
+                        <span>${item.name || 'Product'} (x${item.quantity || 1})</span>
+                        <span>$${((parseFloat(item.price) || 0) * (parseInt(item.quantity) || 1)).toFixed(2)}</span>
+                    </div>
+                `).join('')}
+            </div>
+            
+            <div class="section">
+                <div class="section-title">Order Summary</div>
+                <div class="item"><span>Subtotal:</span><span>$${(orderData.totals?.subtotal || 0).toFixed(2)}</span></div>
+                <div class="item"><span>Shipping:</span><span>${(orderData.totals?.shipping === 0 || orderData.totals?.shipping === '0') ? 'FREE' : '$' + (parseFloat(orderData.totals?.shipping) || 0).toFixed(2)}</span></div>
+                <div class="item"><span>Tax:</span><span>$${(orderData.totals?.tax || 0).toFixed(2)}</span></div>
+                <div class="item total"><span>Total:</span><span>$${(orderData.totals?.total || 0).toFixed(2)}</span></div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">Shipping Information</div>
+                <div>${orderData.shipping?.firstName || ''} ${orderData.shipping?.lastName || ''}</div>
+                <div>${orderData.shipping?.address || ''}</div>
+                <div>${orderData.shipping?.city || ''}, ${orderData.shipping?.state || ''} ${orderData.shipping?.zipCode || ''}</div>
+                <div>${orderData.shipping?.country || ''}</div>
+                <div>Phone: ${orderData.shipping?.phone || ''}</div>
+                <div>Email: ${orderData.shipping?.email || ''}</div>
+            </div>
+            
+            <div class="thank-you">
+                Thank you for your purchase!<br>
+                Estimated Delivery: ${(() => {
+                    try {
+                        const date = new Date(orderData.estimatedDelivery || Date.now() + 7 * 24 * 60 * 60 * 1000);
+                        return date.toLocaleDateString();
+                    } catch (e) {
+                        return 'To be determined';
+                    }
+                })()}
+            </div>
+        </body>
+        </html>
+    `;
+
+    // Create a new window and print
+    const printWindow = window.open('', '_blank');
+    printWindow.document.write(receiptContent);
+    printWindow.document.close();
+    
+    // Wait for content to load then print
+    printWindow.onload = function() {
+        printWindow.print();
+    };
+}
+
+// Initialize page
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Receipt page loaded');
+    loadOrderData();
+});
+</script>
+
+</body>
+</html>
